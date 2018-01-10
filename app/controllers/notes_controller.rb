@@ -6,7 +6,7 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
-    render json: @notes
+    render json: @note
 end
 
 end
