@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from './store/actions/noteActions.js'
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    if (this.props.notes.length === 0) {
+      console.log('in component did mount')
+      this.props.actions.fetchNotes()
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,4 +28,13 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStatetoProps(state) {
+  console.log('in map state to props')
+  return {notes: state.notes.notes}
+}
+
+function mapDispatchtoProps(dispatch){
+  return {actions: bindActionCreators(actions,dispatch)}
+}
+
+export const TestApp = connect(mapStatetoProps, mapDispatchtoProps)(App)
