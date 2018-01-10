@@ -6,7 +6,6 @@ export function fetchNotes(){
     .then(res => {
       return res.json()
     }).then(responseJson => {
-      console.log(responseJson)
       dispatch({type: 'FETCH_NOTES', payload: responseJson})
     })
   }
