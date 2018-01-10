@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Note.create(title: 'Notes!', body: 'A note app! Try it out!' )
+Note.create(title: 'Autosave!', body: 'See if it saves as you type!')
+Note.create(title: "CRUDdy app!", body: 'Enjoy that you can delete your mistakes and change your mind too!' )
