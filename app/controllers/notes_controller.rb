@@ -6,3 +6,5 @@ class NotesController < ApplicationController
       format.json {render json: @notes}
   end
 end
+
+end
