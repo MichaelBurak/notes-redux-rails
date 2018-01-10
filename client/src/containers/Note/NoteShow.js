@@ -1,13 +1,12 @@
 //this will contain a single note
 
 import React from 'react';
+import Note from '../../components/Note';
 import { connect } from 'react-redux';
 
 const NoteShow = ({ note }) =>
-  <div>
-    <h3>Title: {note.title}</h3>
-    <p>{note.body}</p>
-  </div>
+<Note
+note = {note}/>
 
 const mapStateToProps = (state, ownProps) => {
   const note = state.notes.notes.find(note => note.id == ownProps.match.params.id)
