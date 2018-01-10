@@ -1,6 +1,7 @@
 //this will display multiple notes
 
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Notes = (props) => {
     return( props.notes.map((note) => {
@@ -8,7 +9,7 @@ const Notes = (props) => {
          <ul>
          <li>
          <h3>
-         {note.title}
+         <Link to={`/notes/${note.id}`}>{note.title}</Link>
          </h3>
          </li>
          {note.body}
