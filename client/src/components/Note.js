@@ -1,7 +1,7 @@
 //stateless component with a single note
 
 import React from 'react'
-import {note} from '../containers/Note/NoteShow'
+import {note} from '../containers/Note/NoteShowContainer'
 
 const Note = ({ note }) =>
   <div>

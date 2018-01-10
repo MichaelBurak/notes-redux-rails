@@ -4,7 +4,7 @@ import React from 'react';
 import Note from '../../components/Note';
 import { connect } from 'react-redux';
 
-const NoteShow = ({ note }) =>
+const NoteShowContainer = ({ note }) =>
 <Note
 note = {note}/>
 
@@ -18,4 +18,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(NoteShow);
+export default connect(mapStateToProps)(NoteShowContainer);

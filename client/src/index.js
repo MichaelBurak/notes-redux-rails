@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import NotesContainer from './containers/NotesContainer';
-import NoteShow from './containers/Note/NoteShow';
+import NoteShowContainer from './containers/Note/NoteShowContainer';
 import EditNoteContainer from './containers/Note/EditNoteContainer';
 import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 import {Provider} from 'react-redux';
@@ -23,7 +23,7 @@ ReactDOM.render(
     <Router>
     <Switch>
     <Route exact path="/" component={NotesContainer} />
-    <Route exact path={`/notes/:id`} component={NoteShow} />
+    <Route exact path={`/notes/:id`} component={NoteShowContainer} />
     <Route exact path={`/notes/:id/edit`} component={EditNoteContainer} />
     <Route exact path={`notes/new`} component={CreateNoteContainer} />
     </Switch>
