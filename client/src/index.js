@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {TestApp} from './App';
+import Notes from './containers/Notes';
 import {Provider} from 'react-redux';
 import { createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
@@ -15,6 +15,6 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store = {store} >
-  <TestApp />
+  <Notes />
   </Provider>, document.getElementById('root'));
 registerServiceWorker();
