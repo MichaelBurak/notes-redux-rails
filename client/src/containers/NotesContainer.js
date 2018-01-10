@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Notes from '../components/Notes'
 import * as actions from '../store/actions/noteActions';
+import { Link } from 'react-router-dom';
 
 class NotesContainer extends React.Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ render() {
     <div>
     <Notes
     notes= {this.props.notes}/>
+    <Link to={`notes/new`}>Create a new note!</Link>
     </div>
   )
 }

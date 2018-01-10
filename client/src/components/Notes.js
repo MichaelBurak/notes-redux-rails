@@ -13,7 +13,6 @@ const Notes = (props) => {
          </h2>
          </li>
          {note.body}
-         <h5> <Link to={`notes/${note.id}/edit`}>Edit this note</Link> </h5>
          </ul>
          </div>
     }))

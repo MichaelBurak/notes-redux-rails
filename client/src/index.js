@@ -4,11 +4,12 @@ import './index.css';
 import NotesContainer from './containers/NotesContainer';
 import NoteShow from './containers/Note/NoteShow';
 import EditNoteContainer from './containers/Note/EditNoteContainer';
+import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 import {Provider} from 'react-redux';
 import { createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './store/reducers'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -18,12 +19,15 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store = {store} >
-  <Router>
     <div>
+    <Router>
+    <Switch>
     <Route exact path="/" component={NotesContainer} />
     <Route exact path={`/notes/:id`} component={NoteShow} />
     <Route exact path={`/notes/:id/edit`} component={EditNoteContainer} />
+    <Route exact path={`notes/new`} component={CreateNoteContainer} />
+    </Switch>
+    </Router>
     </div>
-  </Router>
   </Provider>, document.getElementById('root'));
 registerServiceWorker();
