@@ -10,3 +10,14 @@ export function fetchNotes(){
     })
   }
 }
+export function createNote(){
+    const request = {
+      method: 'POST',
+      body: JSON.stringify(),
+      headers: { 'Content-Type': 'application/json' }
+    }
+    return function(dispatch){
+    return fetch(`/notes`, request)
+      .then(response => response.json())
+    }
+  }
