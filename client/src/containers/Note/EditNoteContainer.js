@@ -1,11 +1,9 @@
 //allows editing of single note
 import React from 'react';
-import EditNote from '../../components/EditNote';
 import { connect } from 'react-redux';
 
 const EditNoteContainer = ({ note }) =>
-  <EditNote
-  note = {note}/>
+  <p>refactoring</p>
 
   const mapStateToProps = (state, ownProps) => {
     const note = state.notes.notes.find(note => note.id == ownProps.match.params.id)

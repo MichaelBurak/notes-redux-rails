@@ -1,35 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from './store/actions/noteActions.js'
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotesContainer from './containers/NotesContainer';
+import NoteShowContainer from './containers/Note/NoteShowContainer';
+import EditNoteContainer from './containers/Note/EditNoteContainer';
+import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 
 class App extends Component {
   componentDidMount() {
     if (this.props.notes.length === 0) {
-      console.log('in component did mount')
       this.props.actions.fetchNotes()
     }
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+    <div>
+    <Router>
+    <Switch>
+    <Route path="/" exact component={NotesContainer} />
+    <Route exact path={`/notes/new`} component={CreateNoteContainer} />
+    <Route path={`/notes/:id/edit`} component={EditNoteContainer} />
+    <Route path={`/notes/:id`} component={NoteShowContainer} />
+    </Switch>
+    </Router>
+    </div>
     );
   }
 }
 
 function mapStatetoProps(state) {
-  console.log('in map state to props')
   return {notes: state.notes.notes}
 }
 
@@ -37,4 +40,4 @@ function mapDispatchtoProps(dispatch){
   return {actions: bindActionCreators(actions,dispatch)}
 }
 
-export const TestApp = connect(mapStatetoProps, mapDispatchtoProps)(App)
+export default connect(mapStatetoProps, mapDispatchtoProps)(App)

@@ -2,13 +2,12 @@
 
 //allows editing of single note
 import React from 'react';
-import CreateNote from '../../components/CreateNote';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
 
 const CreateNoteContainer = () =>
-  <CreateNote/>
+  <p>refactoring</p>
 
   function mapStatetoProps(state) {
     return {notes: state.notes.notes}
