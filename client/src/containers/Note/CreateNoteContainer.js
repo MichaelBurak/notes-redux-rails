@@ -6,8 +6,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
 
-const CreateNoteContainer = () =>
-  <p>refactoring</p>
+class CreateNoteContainer extends React.Component {
+  render() {
+    return (
+      <div>
+      <form>
+      <h2> Create a New Post! </h2>
+      Post Title:<br/>
+      <input type="text" name="title"/> <br/>
+      Post Content:<br/>
+      <input type="text" name="body"/>
+      <input type="submit"/>
+      </form>
+      </div>
+    )
+  }
+  }
 
   function mapStatetoProps(state) {
     return {notes: state.notes.notes}

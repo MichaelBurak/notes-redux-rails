@@ -10,7 +10,7 @@ export function fetchNotes(){
     })
   }
 }
-export function createNote(){
+export function createNote(values){
     const request = {
       method: 'POST',
       body: JSON.stringify(),
