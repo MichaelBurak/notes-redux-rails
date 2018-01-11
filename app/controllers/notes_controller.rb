@@ -7,6 +7,35 @@ class NotesController < ApplicationController
   def show
     @note = Note.find(params[:id])
     render json: @note
-end
+  end
+
+  def create
+    @note = Note.new(note_params)
+    if @Note.save
+      render json: @note
+    else
+      render json: { errors: { message: 'note NOT created' }}
+    end
+  end
+
+  def update
+    @note = Note.find(params[:id])
+    @note.update(note_params)
+    if @note.save
+      render json: @note
+    else
+      render json: { errors: { message: 'note NOT updated' }}
+    end
+  end
+
+  def destroy
+    @note = Note.find(params[:id])
+    @note.delete
+  end
+
+private
+  def note_params
+    params.require(:note).permit(:title, :body)
+  end
 
 end
