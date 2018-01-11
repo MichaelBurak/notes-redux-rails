@@ -22,10 +22,10 @@ ReactDOM.render(
     <div>
     <Router>
     <Switch>
-    <Route exact path="/" component={NotesContainer} />
-    <Route exact path={`/notes/:id`} component={NoteShowContainer} />
-    <Route exact path={`/notes/:id/edit`} component={EditNoteContainer} />
+    <Route path="/" exact component={NotesContainer} />
     <Route exact path={`notes/new`} component={CreateNoteContainer} />
+    <Route path={`/notes/:id/edit`} component={EditNoteContainer} />
+    <Route path={`/notes/:id`} component={NoteShowContainer} />
     </Switch>
     </Router>
     </div>

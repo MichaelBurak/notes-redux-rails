@@ -1,12 +1,18 @@
 //presentational component for editing of note, including a delete button
 
 import React from 'react'
-import {note} from '../containers/Note/EditNoteContainer'
 
 const EditNote = ({ note }) =>
-  <div>
-    <h3>Title: {note.title}</h3>
-    <p>{note.body}</p>
-  </div>
+<div>
+  <form>
+  Post title:<br/>
+  <input type="text" name="title"/>
+  <br/>
+  Post text:<br/>
+  <input type="text" name="body" />
+  <input type="submit"/>
+  </form>
+</div>
+
 
 export default EditNote
