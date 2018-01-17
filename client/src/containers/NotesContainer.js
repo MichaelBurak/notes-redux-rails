@@ -20,6 +20,7 @@ render() {
     <Notes
     notes= {this.props.notes}/>
     <Link to={`notes/new`}>Create a new note!</Link>
+    <Link to={`/notes/form`}>Test</Link>
     </div>
   )
 }
