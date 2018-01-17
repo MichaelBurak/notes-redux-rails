@@ -11,7 +11,7 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
-    if @Note.save
+    if @note.save
       render json: @note
     else
       render json: { errors: { message: 'note NOT created' }}

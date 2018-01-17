@@ -10,14 +10,14 @@ class CreateNoteContainer extends React.Component {
     super(props);
 
     this.state = {
-      text: '',
+      title: '',
       body: ''
     };
   }
 
   changeText(e) {
     this.setState({
-      text: e.target.value
+      title: e.target.value
     });
   }
 
@@ -27,11 +27,17 @@ class CreateNoteContainer extends React.Component {
     })
   }
 
+  submitForm(e){
+    e.preventDefault()
+    const values = {title: `${this.state.title}`, body: `${this.state.body}`}
+    this.props.actions.createNote(values)
+  }
+
 
   render() {
     return (
       <div>
-      <form>
+      <form onSubmit={(e) => this.submitForm(e)}>
       <h2> Create a New Post! </h2>
       Post Title:<br/>
       <input type="text" name="title" value={this.state.title} onChange={(e) => this.changeText(e)}/> <br/>

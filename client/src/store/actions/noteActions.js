@@ -1,4 +1,6 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import { BrowserRouter } from 'react-router-dom'
+
 export function fetchNotes(){
   return function(dispatch) {
     dispatch({type: 'LOADING_NOTES'})
@@ -13,11 +15,13 @@ export function fetchNotes(){
 export function createNote(values){
     const request = {
       method: 'POST',
-      body: JSON.stringify(),
+      body: JSON.stringify(values),
       headers: { 'Content-Type': 'application/json' }
     }
+
     return function(dispatch){
     return fetch(`/notes`, request)
       .then(response => response.json())
     }
+
   }
