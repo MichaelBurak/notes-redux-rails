@@ -8,6 +8,7 @@ import NotesContainer from './containers/NotesContainer';
 import NoteForm from './containers/NoteForm'
 import NoteShowContainer from './containers/Note/NoteShowContainer';
 import EditNoteContainer from './containers/Note/EditNoteContainer';
+import EditNoteContainer2 from './containers/Note/EditNoteContainer2';
 import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
     <Route path="/" exact component={NotesContainer} />
     <Route exact path={`/notes/new`} component={CreateNoteContainer} />
     <Route exact path={`/notes/form`} component={NoteForm} />
-    <Route path={`/notes/:id/edit`} component={EditNoteContainer} />
+    <Route path={`/notes/:id/edit`} component={EditNoteContainer2} />
     <Route path={`/notes/:id`} component={NoteShowContainer} />
     </Switch>
     </Router>

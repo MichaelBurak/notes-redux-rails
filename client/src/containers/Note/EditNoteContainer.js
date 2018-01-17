@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../store/actions/noteActions.js';
 import NoteShowContainer from './NoteShowContainer'
-import { Field, reduxForm } from 'redux-form'
-
 
 
 class EditNoteContainer extends React.Component {
