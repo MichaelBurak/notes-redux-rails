@@ -5,7 +5,7 @@ import * as actions from './store/actions/noteActions.js'
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotesContainer from './containers/NotesContainer';
-import NoteForm from './containers/NoteForm'
+import EditNoteForm from './containers/EditNoteForm'
 import NoteShowContainer from './containers/Note/NoteShowContainer';
 import EditNoteContainer from './containers/Note/EditNoteContainer';
 import EditNoteContainer2 from './containers/Note/EditNoteContainer2';
@@ -25,7 +25,6 @@ class App extends Component {
     <Switch>
     <Route path="/" exact component={NotesContainer} />
     <Route exact path={`/notes/new`} component={CreateNoteContainer} />
-    <Route exact path={`/notes/form`} component={NoteForm} />
     <Route path={`/notes/:id/edit`} component={EditNoteContainer2} />
     <Route path={`/notes/:id`} component={NoteShowContainer} />
     </Switch>

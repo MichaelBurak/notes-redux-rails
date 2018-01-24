@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-let NoteForm = props => {
-  const { handleSubmit } = props
-  return (
+const NoteForm = ({handleSubmit}) =>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="title">Title:</label>
@@ -15,11 +13,13 @@ let NoteForm = props => {
       </div>
       <button type="submit">Submit</button>
     </form>
-  )
-}
 
-NoteForm = reduxForm({
+    NoteForm.propTypes = {
+      mode: PropTypes.oneOf(['create', 'edit']),
+      onSubmit: PropTypes.func
+    };
+
+
+export const NoteForm = reduxForm({
   form: 'note'
-})(NoteForm)
-
-export default NoteForm
+})(NoteForm);

@@ -1,12 +1,12 @@
 import React from 'react'
-import NoteForm from '../NoteForm'
+import {EditNoteForm} from '../EditNoteForm'
 
 class EditNoteContainer2 extends React.Component {
   submit = values => {
     console.log(values)
   }
   render(){
-    return <NoteForm onSubmit={this.submit}/>
+    return <EditNoteForm onSubmit={this.submit}/>
   }
 }
 
