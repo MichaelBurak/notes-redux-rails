@@ -40,7 +40,7 @@ export function createNote(values, history){
       .then(response => response.json())
     return function(dispatch) {
     history.push("/")
-    dispatch({type: 'FETCH_NOTES'})
+    //dispatch({type: 'FETCH_NOTES'})
   }
     }
 
@@ -55,6 +55,5 @@ export function createNote(values, history){
     .then(response => response.json)
     return function(dispatch){
       history.push(`/notes/${id}`)
-      dispatch({type: 'FETCH_NOTES'})
     }
   }

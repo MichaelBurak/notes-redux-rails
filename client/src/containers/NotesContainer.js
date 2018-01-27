@@ -1,5 +1,3 @@
-//this is analogous to index functionality with mapping
-
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -8,32 +6,19 @@ import * as actions from '../store/actions/noteActions';
 import { Link } from 'react-router-dom';
 
 class NotesContainer extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      notes: {}
-    }
-  }
-
   componentWillMount() {
-  //if (this.props.notes.length === 0) {
+  if (this.props.notes.length === 0) {
     this.props.actions.fetchNotes()
-  //}
+  }
 }
 
-  componentDidMount() {
-    console.log(this.props.notes)
-    this.setState({
-      notes: this.props.notes
-    })
-  }
-
 render() {
-
   return (
     <div>
-    <p> test </p>
-
+    <Notes
+    notes= {this.props.notes}/>
+    <Link to={`notes/new`}>Create a new note!</Link>
+    <Link to={`/notes/form`}>Test</Link>
     </div>
   )
 }
