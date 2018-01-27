@@ -28,9 +28,9 @@ class CreateNoteContainer extends React.Component {
   }
 
   submitForm(e){
-      const history = this.props.history
+        const history = this.props.history
         e.preventDefault();
-        const values = {title: `${this.state.title}`, body: `${this.state.body}`};
+        const values = this.state;
         this.props.actions.createNote(values, history);
         this.props.actions.fetchNotes()
     };
