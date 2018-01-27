@@ -30,7 +30,6 @@ export function fetchNote(){
 }
 
 export function createNote(values, history){
-  debugger
     const request = {
       method: 'POST',
       body: JSON.stringify(values),
@@ -40,12 +39,10 @@ export function createNote(values, history){
       .then(response => response.json())
     return function(dispatch) {
     history.push("/")
-    //dispatch({type: 'FETCH_NOTES'})
   }
     }
 
   export function updateNote(values, history, id){
-    debugger
   const request = {
     method: 'PATCH',
     body: JSON.stringify(values),

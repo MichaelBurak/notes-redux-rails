@@ -1,6 +1,6 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
-import * as actions from '../store/actions/noteActions.js'
+import * as actions from '../../store/actions/noteActions.js'
 import { connect } from 'react-redux';
 
 class EditNote extends React.Component{
@@ -32,7 +32,6 @@ class EditNote extends React.Component{
           const history = this.props.history
           const values = this.state;
           const id = this.props.id
-          debugger
           this.props.actions.updateNote(values, history, id);
           e.preventDefault();
       };
