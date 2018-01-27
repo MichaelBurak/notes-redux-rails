@@ -1,7 +1,6 @@
 //stateless component with a single note
 
 import React from 'react'
-import { Link } from 'react-router-dom';
 import EditNoteContainer from '../containers/Note/EditNoteContainer'
 
 const Note = ({ note }) =>

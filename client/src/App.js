@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as actions from './store/actions/noteActions.js'
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NotesContainer from './containers/NotesContainer';
+import NotesIndexContainer from './containers/Note/NotesIndexContainer';
 import NoteShowContainer from './containers/Note/NoteShowContainer';
 import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 
@@ -20,9 +20,9 @@ class App extends Component {
     <div>
     <Router>
     <Switch>
-    <Route path="/" exact component={NotesContainer} />
+    <Route path="/" exact component={NotesIndexContainer} />
     <Route exact path={`/notes/new`} component={CreateNoteContainer} />
-    <Route path={`/notes/:id`} exact component={NoteShowContainer} />
+    <Route path={`/notes/:id`} component={NoteShowContainer} />
     </Switch>
     </Router>
     </div>

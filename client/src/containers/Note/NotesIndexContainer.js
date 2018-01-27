@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Notes from '../components/Notes'
-import * as actions from '../store/actions/noteActions';
+import Notes from '../../components/Notes'
+import * as actions from '../../store/actions/noteActions';
 import { Link } from 'react-router-dom';
 
-class NotesContainer extends React.Component {
+class NotesIndexContainer extends React.Component {
   componentWillMount() {
   if (this.props.notes.length === 0) {
     this.props.actions.fetchNotes()
@@ -18,7 +18,6 @@ render() {
     <Notes
     notes= {this.props.notes}/>
     <Link to={`notes/new`}>Create a new note!</Link>
-    <Link to={`/notes/form`}>Test</Link>
     </div>
   )
 }
@@ -32,4 +31,4 @@ function mapDispatchtoProps(dispatch){
   return {actions: bindActionCreators(actions,dispatch)}
 }
 
-export default connect(mapStatetoProps, mapDispatchtoProps)(NotesContainer)
+export default connect(mapStatetoProps, mapDispatchtoProps)(NotesIndexContainer)
