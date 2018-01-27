@@ -54,12 +54,12 @@ class CreateNoteContainer extends React.Component {
   }
   }
 
-  function mapStatetoProps(state) {
+  function mapStateToProps(state) {
     return {notes: state.notes.notes}
   }
 
-  function mapDispatchtoProps(dispatch){
+  function mapDispatchToProps(dispatch){
     return {actions: bindActionCreators(actions,dispatch)}
   }
 
-  export default connect(mapStatetoProps, mapDispatchtoProps)(CreateNoteContainer)
+  export default connect(mapStateToProps, mapDispatchToProps)(CreateNoteContainer)

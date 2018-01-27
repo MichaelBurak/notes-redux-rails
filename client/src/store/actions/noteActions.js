@@ -33,4 +33,9 @@ export function updateNote(values, history, id){
     headers: { 'Content-Type': 'application/json' }
   }
   fetch(`/notes/${id}`, request)
+    .then(response => response.json())
+    debugger 
+    return function(dispatch) {
+      history.push(`/notes/${id}`)
+    }
     }
