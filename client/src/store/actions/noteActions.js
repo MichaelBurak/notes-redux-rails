@@ -42,14 +42,13 @@ export function createNote(values, history){
   }
     }
 
-  export function updateNote(values, history, id){
+  export function updateNote(values, history, id, dispatch){
   const request = {
     method: 'PATCH',
     body: JSON.stringify(values),
     headers: { 'Content-Type': 'application/json' }
   }
   fetch(`/notes/${id}`, request)
-    .then(response => response.json)
     return function(dispatch){
       history.push(`/notes/${id}`)
     }
