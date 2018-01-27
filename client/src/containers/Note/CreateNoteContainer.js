@@ -29,31 +29,11 @@ class CreateNoteContainer extends React.Component {
   }
 
   submitForm(e){
-    debugger
-    function conditionalExecution(e) {
-      debugger
-    var isDone = false;
-      debugger
-    function checkDone (e) {
-        if (isDone === true)
-        {
-            isDone = false;
-            return;
-        }
-        debugger
+      const history = this.props.history
         e.preventDefault();
-        debugger
         const values = {title: `${this.state.title}`, body: `${this.state.body}`};
-        debugger
-        this.props.actions.createNote(values);
-        debugger
-        isDone = true;
-        debugger
-        this.trigger(e.type);
-        debugger
+        this.props.actions.createNote(values, history);
     };
-  }
-}
 
 
   render() {
@@ -68,7 +48,8 @@ class CreateNoteContainer extends React.Component {
       <button
       type= 'button'
       className = "Success"
-      onClick = {(e) => this.submitForm(e)}> <Link to={"/"}></Link></button>
+      onClick = {(e) => this.submitForm(e)}>
+      </button>
       </form>
       </div>
     )
