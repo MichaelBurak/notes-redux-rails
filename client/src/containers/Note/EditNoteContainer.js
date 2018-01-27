@@ -11,7 +11,8 @@ class EditNoteContainer extends React.Component {
     this.state = {
       id: '',
       title: '',
-      body: ''
+      body: '',
+      updated: null
     }
   }
 
@@ -34,7 +35,7 @@ class EditNoteContainer extends React.Component {
     const history = this.props.history
     const values = this.state;
     const id = this.props.id
-    this.props.updateNote(values, history, id);
+    this.props.updateNote(values, history, id)
     this.props.fetchNotes()
   }
 
