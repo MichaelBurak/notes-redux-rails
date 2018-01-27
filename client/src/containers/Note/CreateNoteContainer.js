@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
+import { Link } from 'react-router-dom';
 
 class CreateNoteContainer extends React.Component {
 
@@ -28,22 +29,46 @@ class CreateNoteContainer extends React.Component {
   }
 
   submitForm(e){
-    e.preventDefault()
-    const values = {title: `${this.state.title}`, body: `${this.state.body}`}
-    this.props.actions.createNote(values)
+    debugger
+    function conditionalExecution(e) {
+      debugger
+    var isDone = false;
+      debugger
+    function checkDone (e) {
+        if (isDone === true)
+        {
+            isDone = false;
+            return;
+        }
+        debugger
+        e.preventDefault();
+        debugger
+        const values = {title: `${this.state.title}`, body: `${this.state.body}`};
+        debugger
+        this.props.actions.createNote(values);
+        debugger
+        isDone = true;
+        debugger
+        this.trigger(e.type);
+        debugger
+    };
   }
+}
 
 
   render() {
     return (
       <div>
-      <form onSubmit={(e) => this.submitForm(e)}>
+      <form>
       <h2> Create a New Post! </h2>
       Post Title:<br/>
       <input type="text" name="title" value={this.state.title} onChange={(e) => this.changeText(e)}/> <br/>
       Post Content:<br/>
       <input type="text" name="body" value={this.state.body} onChange={(e) => this.changeBody(e)}/>
-      <input type="submit"/>
+      <button
+      type= 'button'
+      className = "Success"
+      onClick = {(e) => this.submitForm(e)}> <Link to={"/"}></Link></button>
       </form>
       </div>
     )

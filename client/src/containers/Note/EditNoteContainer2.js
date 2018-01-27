@@ -1,5 +1,5 @@
 import React from 'react'
-import {EditNoteForm} from '../EditNoteForm'
+import EditNoteForm from '../EditNoteForm'
 
 class EditNoteContainer2 extends React.Component {
   submit = values => {

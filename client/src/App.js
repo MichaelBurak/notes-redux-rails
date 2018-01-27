@@ -12,7 +12,7 @@ import EditNoteContainer2 from './containers/Note/EditNoteContainer2';
 import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 
 class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.notes.length === 0) {
       this.props.actions.fetchNotes()
     }
@@ -25,7 +25,7 @@ class App extends Component {
     <Switch>
     <Route path="/" exact component={NotesContainer} />
     <Route exact path={`/notes/new`} component={CreateNoteContainer} />
-    <Route path={`/notes/:id/edit`} component={EditNoteContainer2} />
+    <Route exact path={`/notes/:id/edit`} exact component={EditNoteContainer2} />
     <Route path={`/notes/:id`} component={NoteShowContainer} />
     </Switch>
     </Router>
