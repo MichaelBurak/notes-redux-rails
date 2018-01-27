@@ -1,13 +1,13 @@
 //this will contain a single note
 
 import React from 'react';
-import Note from '../../components/Note';
+import UpdatedNote from '../../components/UpdatedNote'
 
 
 import { connect } from 'react-redux';
 
-const NoteShowContainer = ({ note }, props) =>
-<Note
+const UpdatedNoteShowContainer = ({ note }, props) =>
+<UpdatedNote
 note = {note}/>
 
 const mapStateToProps = (state, ownProps) => {
@@ -20,4 +20,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(NoteShowContainer);
+export default connect(mapStateToProps)(UpdatedNoteShowContainer);

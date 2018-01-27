@@ -36,7 +36,6 @@ class EditNoteContainer extends React.Component {
     const values = this.state;
     const id = this.props.id
     this.props.updateNote(values, history, id)
-    this.props.fetchNotes()
   }
 
   render() {

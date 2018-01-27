@@ -13,18 +13,6 @@ export function fetchNotes(){
   }
 }
 
-export function fetchNote(id){
-  return function(dispatch) {
-    dispatch({type: 'LOADING_NOTES'})
-    return fetch(`/notes/${id}`)
-    .then(res => {
-      return res.json()
-    }).then(responseJson => {
-      dispatch({type: 'FETCH_NOTE', payload: responseJson})
-    })
-  }
-}
-
 export function createNote(values, history){
     const request = {
       method: 'POST',
@@ -47,6 +35,6 @@ export function updateNote(values, history, id){
   fetch(`/notes/${id}`, request)
     .then(response => response.json())
     return function(dispatch) {
-      history.push(`/notes/${id}`)
+      history.push(`/notes/${id}/edited`)
     }
     }

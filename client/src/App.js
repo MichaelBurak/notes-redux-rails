@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotesIndexContainer from './containers/Note/NotesIndexContainer';
 import NoteShowContainer from './containers/Note/NoteShowContainer';
 import CreateNoteContainer from './containers/Note/CreateNoteContainer';
+import UpdatedNoteShowContainer from './containers/Note/UpdatedNoteShowContainer';
 
 class App extends Component {
   componentWillMount() {
@@ -22,6 +23,7 @@ class App extends Component {
     <Switch>
     <Route path="/" exact component={NotesIndexContainer} />
     <Route exact path={`/notes/new`} component={CreateNoteContainer} />
+    <Route exact path={`/notes/:id/edited`} exact component= {UpdatedNoteShowContainer} />
     <Route path={`/notes/:id`} component={NoteShowContainer} />
     </Switch>
     </Router>
