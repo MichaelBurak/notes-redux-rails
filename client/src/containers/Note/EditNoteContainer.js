@@ -21,21 +21,19 @@ class EditNote extends React.Component{
     })
   }
 
+  handleChange = (e) => { 
+    const { name, value } = e.target; 
+    this.setState({ [name]: value }); 
+    e.preventDefault() 
+  }
 
-    handleChange = (e) => { 
-      const { name, value } = e.target; 
-      this.setState({ [name]: value }); 
-      e.preventDefault() 
-    }
-
-    submitForm(e){
-          const history = this.props.history
-          const values = this.state;
-          const id = this.props.id
-          this.props.actions.updateNote(values, history, id);
-          e.preventDefault();
-      };
-
+  submitForm(e){
+    const history = this.props.history
+    const values = this.state;
+    const id = this.props.id
+    this.props.actions.updateNote(values, history, id);
+    e.preventDefault();
+  };
 
     render() {
       return (

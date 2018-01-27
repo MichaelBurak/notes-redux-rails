@@ -26,7 +26,7 @@ export function createNote(values, history){
   }
     }
 
-  export function updateNote(values, history, id){
+export function updateNote(values, history, id){
   const request = {
     method: 'PATCH',
     body: JSON.stringify(values),

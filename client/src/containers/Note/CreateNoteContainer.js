@@ -5,10 +5,8 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
 
 class CreateNoteContainer extends React.Component {
-
   constructor(props){
     super(props);
-
     this.state = {
       title: '',
       body: ''
@@ -27,14 +25,14 @@ class CreateNoteContainer extends React.Component {
     })
   }
 
+  //inconsistently fetches and re-renders when returning to root?
   submitForm(e){
         const history = this.props.history
-        e.preventDefault();
         const values = this.state;
         this.props.actions.createNote(values, history);
         this.props.actions.fetchNotes()
+        e.preventDefault();
     };
-
 
   render() {
     return (

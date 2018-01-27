@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Notes = (props) => {
     return( props.notes.map((note) => {
-         return( <div>
+         return(
+         <div>
          <ul>
          <li>
          <h2>
@@ -18,4 +19,5 @@ const Notes = (props) => {
        )
     }))
   }
+  
 export default Notes;
