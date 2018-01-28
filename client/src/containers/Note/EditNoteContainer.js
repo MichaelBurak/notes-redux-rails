@@ -31,11 +31,12 @@ class EditNoteContainer extends React.Component {
   }
 
   submitForm(e) {
-    e.preventDefault();
     const history = this.props.history
     const values = this.state;
     const id = this.props.id
     this.props.actions.updateNote(values, history, id)
+    this.props.actions.fetchNotes()
+    e.preventDefault();
   }
 
   render() {
@@ -61,15 +62,6 @@ class EditNoteContainer extends React.Component {
       </div>
     )}
   }
-
-    //const mapDispatchToProps = dispatch => {
-      //return {
-        //updateNote: (values, history, id) =>
-          //dispatch(actions.updateNote(values, history, id)),
-          //fetchNotes: () =>
-          //dispatch(actions.fetchNotes())
-      //}
-    //}
 
     function mapDispatchToProps(dispatch){
       return {actions: bindActionCreators(actions,dispatch)}
