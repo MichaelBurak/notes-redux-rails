@@ -1,7 +1,14 @@
-import {Navbar, NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap'
+import {Navbar, NavItem, NavDropdown, MenuItem, Nav, FormGroup, FormControl, Button} from 'react-bootstrap'
 import React from 'react'
+//import { withRouter } from "react-router-dom"
 
 const NavigationBar = (props) =>
+
+//function searchForm(e){
+  //e.preventDefault
+  //const history = this.props.history
+  //history.push(`/notes/${e.target.value}`)
+//}
 
 <Navbar>
   <Navbar.Header>
@@ -13,16 +20,9 @@ const NavigationBar = (props) =>
     <NavItem eventKey={1} href="/">
       Return to Index
     </NavItem>
-    <NavItem eventKey={2} href="#">
-      Link
+    <NavItem eventKey={2} href="/notes/new">
+    Create a new note!
     </NavItem>
-    <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-      <MenuItem eventKey={3.1}>Action</MenuItem>
-      <MenuItem eventKey={3.2}>Another action</MenuItem>
-      <MenuItem eventKey={3.3}>Something else here</MenuItem>
-      <MenuItem divider />
-      <MenuItem eventKey={3.4}>Separated link</MenuItem>
-    </NavDropdown>
   </Nav>
 </Navbar>;
 

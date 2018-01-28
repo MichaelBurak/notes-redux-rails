@@ -18,7 +18,6 @@ render() {
     <div>
     <Notes
     notes= {this.props.notes}/>
-    <Link to={`notes/new`}>Create a new note!</Link>
     </div>
   )
 }
