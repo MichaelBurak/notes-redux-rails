@@ -25,7 +25,6 @@ export function createNote(values, history){
     return dispatch => {
       setTimeout(() => {
         dispatch(fetchNotes())
-        console.log("notes fetched")
       }, 300)
   }
     }
@@ -42,7 +41,6 @@ export function updateNote(values, history, id){
     return dispatch => {
       setTimeout(() => {
         dispatch(fetchNotes())
-        console.log("notes fetched")
       }, 300)
     }
     }
@@ -67,7 +65,6 @@ export function thunkPushAfterDelete(history){
   return function(dispatch) {
   setTimeout(() => {
     dispatch(fetchNotes())
-    console.log("notes fetched")
   }, 10)
   }
 
