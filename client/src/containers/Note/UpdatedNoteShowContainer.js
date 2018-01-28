@@ -1,5 +1,3 @@
-//this will contain a single note
-
 import React from 'react';
 import UpdatedNote from '../../components/UpdatedNote'
 import { connect } from 'react-redux';

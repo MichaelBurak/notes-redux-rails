@@ -5,7 +5,6 @@ import Notes from '../../components/Notes'
 import * as actions from '../../store/actions/noteActions';
 import { Link } from 'react-router-dom';
 
-
 class NotesIndexContainer extends React.Component {
   componentWillMount() {
   if (this.props.notes.length === 0) {

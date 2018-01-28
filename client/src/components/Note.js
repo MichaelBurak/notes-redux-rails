@@ -1,5 +1,3 @@
-//stateless component with a single note
-
 import React from 'react'
 import EditNoteContainer from '../containers/Note/EditNoteContainer'
 import * as actions from '../store/actions/noteActions.js'
@@ -11,13 +9,13 @@ class Note extends React.Component{
     super(props)
   }
 
-    delete(e){
-    e.preventDefault();
-    const history = this.props.history
-    const id = this.props.note.id
-    this.props.deleteNote(id, history)
-    this.props.fetchNotes()
-    }
+  delete(e){
+  e.preventDefault();
+  const history = this.props.history
+  const id = this.props.note.id
+  this.props.deleteNote(id, history)
+  this.props.fetchNotes()
+  }
 
   render() {
   return (
@@ -34,6 +32,7 @@ class Note extends React.Component{
   </div>
 )}
 }
+
   const mapDispatchToProps = dispatch => {
     return {
       deleteNote: (id, history) =>
@@ -42,7 +41,6 @@ class Note extends React.Component{
       dispatch(actions.fetchNotes())
     }
   }
-
 
   export default withRouter(
     connect(null, mapDispatchToProps)(Note)

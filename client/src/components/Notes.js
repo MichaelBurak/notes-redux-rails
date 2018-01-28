@@ -1,5 +1,3 @@
-//this will display multiple notes
-
 import React from 'react'
 import { Link } from 'react-router-dom';
 
@@ -19,5 +17,5 @@ const Notes = (props) => {
        )
     }))
   }
-  
+
 export default Notes;

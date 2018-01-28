@@ -1,4 +1,3 @@
-//handles creation of a single note with autosave through throttle
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
@@ -25,7 +24,6 @@ class CreateNoteContainer extends React.Component {
     })
   }
 
-  //inconsistently fetches and re-renders when returning to root?
   submitForm(e){
         const history = this.props.history
         const values = this.state;

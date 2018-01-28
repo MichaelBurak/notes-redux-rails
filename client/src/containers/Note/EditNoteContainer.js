@@ -71,8 +71,6 @@ class EditNoteContainer extends React.Component {
       }
     }
 
-
-
   export default withRouter(
     connect(null, mapDispatchToProps)(EditNoteContainer)
   );

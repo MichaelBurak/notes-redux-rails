@@ -53,9 +53,9 @@ export function deleteNote(id, history){
   }
 }
 
-  export function thunkPushAfterDelete(history){
-    return function(dispatch) {
-    history.push("/")  
-    }
+export function thunkPushAfterDelete(history){
+  return function(dispatch) {
+  history.push("/")
+  }
 
   }

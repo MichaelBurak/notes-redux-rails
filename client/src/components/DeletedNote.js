@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const DeletedNote = ({note}) =>
   <div>
     <h1> You have deleted your note! Here is what you deleted: </h1>

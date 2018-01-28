@@ -1,7 +1,4 @@
-//stateless component with a single note
-
 import React from 'react'
-
 
 const UpdatedNote = ({note}) =>
   <div>
