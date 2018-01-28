@@ -44,9 +44,18 @@ export function deleteNote(id, history){
     method: 'delete',
     //headers: { 'Content-Type': 'application/json'}
   }
+    history.push(`/notes/${id}/deleted`)
     fetch(`/notes/${id}`, request)
-      //.then(response => response.json())
-      return function(dispatch) {
-        history.push("/")
-      }
+    return dispatch => {
+      setTimeout(() => {
+        dispatch(thunkPushAfterDelete(history));
+      }, 30000)
+  }
+}
+
+  export function thunkPushAfterDelete(history){
+    return function(dispatch) {
+    history.push("/")  
     }
+
+  }
