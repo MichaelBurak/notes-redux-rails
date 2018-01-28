@@ -40,7 +40,10 @@ export function updateNote(values, history, id){
   fetch(`/notes/${id}`, request)
     .then(response => response.json())
     return dispatch => {
+      setTimeout(() => {
         dispatch(fetchNotes())
+        console.log("notes fetched")
+      }, 300)
     }
     }
 
