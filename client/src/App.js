@@ -12,12 +12,6 @@ import NavigationBar from './components/NavigationBar'
 
 class App extends Component {
 
-  componentWillMount() {
-    if (this.props.notes.length === 0) {
-      this.props.actions.fetchNotes()
-    }
-  }
-
   render() {
     return (
     <div>
