@@ -21,8 +21,12 @@ export function createNote(values, history){
     }
     fetch(`/notes`, request)
       .then(response => response.json())
-    return function(dispatch) {
     history.push("/")
+    return dispatch => {
+      setTimeout(() => {
+        dispatch(fetchNotes())
+        console.log("notes fetched")
+      }, 300)
   }
     }
 
@@ -32,12 +36,12 @@ export function updateNote(values, history, id){
     body: JSON.stringify(values),
     headers: { 'Content-Type': 'application/json' }
   }
+  history.push(`/notes/${id}/edited`)
   fetch(`/notes/${id}`, request)
     .then(response => response.json())
-    return function(dispatch) {
-      history.push(`/notes/${id}/edited`)
+    return dispatch => {
+        dispatch(fetchNotes())
     }
-    fetchNotes()
     }
 
 export function deleteNote(id, history){
@@ -45,17 +49,23 @@ export function deleteNote(id, history){
     method: 'delete'
   }
     history.push(`/notes/${id}/deleted`)
-    fetch(`/notes/${id}`, request)
     return dispatch => {
       setTimeout(() => {
+        fetch(`/notes/${id}`, request)
+      }, 300)
+      setTimeout(() => {
         dispatch(thunkPushAfterDelete(history));
-      }, 30000)
+      }, 10000)
+    }
   }
-}
 
 export function thunkPushAfterDelete(history){
-  return function(dispatch) {
   history.push("/")
+  return function(dispatch) {
+  setTimeout(() => {
+    dispatch(fetchNotes())
+    console.log("notes fetched")
+  }, 10)
   }
 
   }

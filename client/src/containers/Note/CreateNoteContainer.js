@@ -28,7 +28,6 @@ class CreateNoteContainer extends React.Component {
         const history = this.props.history
         const values = this.state;
         this.props.actions.createNote(values, history);
-        this.props.actions.fetchNotes()
         e.preventDefault();
     };
 
