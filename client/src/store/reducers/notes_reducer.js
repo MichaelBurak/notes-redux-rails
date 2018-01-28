@@ -1,9 +1,10 @@
-export default function notesReducer(state= { notes: []}, action) {
+const initialState = {notes: []}
+
+export default function notesReducer(state= initialState, action) {
   switch ( action.type ) {
     case 'FETCH_NOTES':
-      return {notes: action.payload}
+      return {...state, notes: action.payload}
     default:
       return state;
   }
-
 }

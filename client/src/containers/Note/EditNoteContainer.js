@@ -35,7 +35,7 @@ class EditNoteContainer extends React.Component {
     const history = this.props.history
     const values = this.state;
     const id = this.props.id
-    this.props.updateNote(values, history, id)
+    this.props.actions.updateNote(values, history, id)
   }
 
   render() {
@@ -62,13 +62,17 @@ class EditNoteContainer extends React.Component {
     )}
   }
 
-    const mapDispatchToProps = dispatch => {
-      return {
-        updateNote: (values, history, id) =>
-          dispatch(actions.updateNote(values, history, id)),
-          fetchNotes: () =>
-          dispatch(actions.fetchNotes())
-      }
+    //const mapDispatchToProps = dispatch => {
+      //return {
+        //updateNote: (values, history, id) =>
+          //dispatch(actions.updateNote(values, history, id)),
+          //fetchNotes: () =>
+          //dispatch(actions.fetchNotes())
+      //}
+    //}
+
+    function mapDispatchToProps(dispatch){
+      return {actions: bindActionCreators(actions,dispatch)}
     }
 
   export default withRouter(

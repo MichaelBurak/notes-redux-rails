@@ -22,12 +22,12 @@ render() {
 }
 }
 
-function mapStatetoProps(state) {
+function mapStateToProps(state) {
   return {notes: state.notes.notes}
 }
 
-function mapDispatchtoProps(dispatch){
+function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions,dispatch)}
 }
 
-export default connect(mapStatetoProps, mapDispatchtoProps)(NotesIndexContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(NotesIndexContainer)
