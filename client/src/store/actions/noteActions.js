@@ -38,3 +38,15 @@ export function updateNote(values, history, id){
       history.push(`/notes/${id}/edited`)
     }
     }
+
+export function deleteNote(id, history){
+  const request = {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json'}
+  }
+    fetch(`/notes/${id}`, request)
+      .then(response => response.json())
+      return function(dispatch) {
+        history.push("/")
+      }
+    }
