@@ -8,6 +8,7 @@ import NotesIndexContainer from './containers/Note/NotesIndexContainer';
 import NoteShowContainer from './containers/Note/NoteShowContainer';
 import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 import UpdatedNoteShowContainer from './containers/Note/UpdatedNoteShowContainer';
+import NavigationBar from './components/NavigationBar'
 
 class App extends Component {
   componentWillMount() {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
     <div>
+    <NavigationBar />
     <Router>
     <Switch>
     <Route path="/" exact component={NotesIndexContainer} />

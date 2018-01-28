@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import Notes from '../../components/Notes'
 import * as actions from '../../store/actions/noteActions';
 import { Link } from 'react-router-dom';
-import NavigationBar from '../../components/NavigationBar'
 
 
 class NotesIndexContainer extends React.Component {
@@ -17,7 +16,6 @@ class NotesIndexContainer extends React.Component {
 render() {
   return (
     <div>
-    <NavigationBar />
     <Notes
     notes= {this.props.notes}/>
     <Link to={`notes/new`}>Create a new note!</Link>

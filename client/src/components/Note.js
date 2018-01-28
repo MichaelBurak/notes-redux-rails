@@ -3,7 +3,6 @@
 import React from 'react'
 import EditNoteContainer from '../containers/Note/EditNoteContainer'
 
-
 const Note = ({ note }, props) =>
   <div>
     <h3>Title: {note.title}</h3>
