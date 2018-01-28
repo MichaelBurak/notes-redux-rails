@@ -14,7 +14,6 @@ class Note extends React.Component{
   const history = this.props.history
   const id = this.props.note.id
   this.props.deleteNote(id, history)
-  this.props.fetchNotes()
   }
 
   render() {
