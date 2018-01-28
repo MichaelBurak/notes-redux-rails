@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from './store/actions/noteActions.js'
-import './App.css';
+//import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotesIndexContainer from './containers/Note/NotesIndexContainer';
 import NoteShowContainer from './containers/Note/NoteShowContainer';

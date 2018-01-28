@@ -2,8 +2,6 @@
 
 import React from 'react';
 import Note from '../../components/Note';
-
-
 import { connect } from 'react-redux';
 
 const NoteShowContainer = ({ note }, props) =>

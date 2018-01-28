@@ -2,8 +2,6 @@
 
 import React from 'react';
 import UpdatedNote from '../../components/UpdatedNote'
-
-
 import { connect } from 'react-redux';
 
 const UpdatedNoteShowContainer = ({ note }, props) =>

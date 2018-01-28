@@ -10,9 +10,4 @@ const UpdatedNote = ({note}) =>
     <p>{note.body}</p>
   </div>
 
-  //const mapStateToProps = (state, ownProps) => {
-    //const title = state.notes.notes.find(note => note.id == ownProps.match.params.id).title
-    //const body = state.notes.notes.find(note => note.id == ownProps.match.params.id).body
-  //}
-
 export default UpdatedNote
