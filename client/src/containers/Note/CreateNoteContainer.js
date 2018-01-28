@@ -45,8 +45,7 @@ class CreateNoteContainer extends React.Component {
       <input type="text" name="body" value={this.state.body} onChange={(e) => this.changeBody(e)}/>
       <button
       type= 'button'
-      className = "Success"
-      onClick = {(e) => this.submitForm(e)}>
+      onClick = {(e) => this.submitForm(e)}>Submit
       </button>
       </form>
       </div>
