@@ -37,12 +37,12 @@ export function updateNote(values, history, id){
     return function(dispatch) {
       history.push(`/notes/${id}/edited`)
     }
+    fetchNotes()
     }
 
 export function deleteNote(id, history){
   const request = {
-    method: 'delete',
-    //headers: { 'Content-Type': 'application/json'}
+    method: 'delete'
   }
     history.push(`/notes/${id}/deleted`)
     fetch(`/notes/${id}`, request)
