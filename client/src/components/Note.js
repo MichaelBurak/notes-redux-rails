@@ -14,8 +14,9 @@ class Note extends React.Component{
     delete(e){
     e.preventDefault();
     const history = this.props.history
-    const id = this.props.id
+    const id = this.props.note.id
     this.props.deleteNote(id, history)
+    this.props.fetchNotes()
     }
 
   render() {
@@ -37,6 +38,8 @@ class Note extends React.Component{
     return {
       deleteNote: (id, history) =>
       dispatch(actions.deleteNote(id, history)),
+      fetchNotes: () =>
+      dispatch(actions.fetchNotes())
     }
   }
 

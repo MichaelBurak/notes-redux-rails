@@ -41,11 +41,11 @@ export function updateNote(values, history, id){
 
 export function deleteNote(id, history){
   const request = {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json'}
+    method: 'delete',
+    //headers: { 'Content-Type': 'application/json'}
   }
     fetch(`/notes/${id}`, request)
-      .then(response => response.json())
+      //.then(response => response.json())
       return function(dispatch) {
         history.push("/")
       }
