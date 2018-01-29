@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom"
 
 class Note extends React.Component{
-  constructor(props) {
-    super(props)
-  }
 
   delete(e){
   e.preventDefault();
