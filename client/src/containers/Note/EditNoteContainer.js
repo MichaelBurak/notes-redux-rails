@@ -41,22 +41,22 @@ class EditNoteContainer extends React.Component {
   render() {
     return (
       <div>
-        <form>
+      <form onSubmit = {(e) => this.submitForm(e)} >
           <h2> Edit {this.state.title}! </h2>
           <h2>Edit Note Title:</h2><br />
           <input type="text"
             name="title"
             value={this.state.title}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            required />
           <br />
           <h3> Edit Note Content:</h3>
           <input type="text"
             name="body"
             value={this.state.body}
-            onChange={this.handleChange} />
-          <button
-            type='button'
-            onClick={(e) => this.submitForm(e)}>Submit</button>
+            onChange={this.handleChange} 
+            required />
+          <button>Submit</button>
         </form>
       </div>
     )}

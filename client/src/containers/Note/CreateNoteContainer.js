@@ -35,15 +35,13 @@ class CreateNoteContainer extends React.Component {
   render() {
     return (
       <div>
-      <form>
+      <form onSubmit = {(e) => this.submitForm(e)} >
       <h2> Create a New Note! </h2>
       Note Title:<br/>
       <input type="text" name="title" value={this.state.title} onChange={(e) => this.changeText(e)} required /> <br/>
       Note Content:<br/>
       <input type="text" name="body" value={this.state.body} onChange={(e) => this.changeBody(e)} required />
-      <button
-      type= 'button'
-      onClick = {(e) => this.submitForm(e)}>Submit
+      <button>Submit
       </button>
       </form>
       </div>
