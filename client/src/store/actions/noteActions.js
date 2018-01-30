@@ -63,7 +63,7 @@ export function deleteNote(id, history){
         fetch(`/notes/${id}`, request)
       setTimeout(() => {
         dispatch(thunkPushAfterDelete(history));
-      }, 10000)
+      }, 5000)
     }
   }
 
@@ -72,9 +72,7 @@ export function deleteNote(id, history){
 export function thunkPushAfterDelete(history){
   history.push("/")
   return function(dispatch) {
-  setTimeout(() => {
     dispatch(fetchNotes())
-  }, 10)
   }
 
   }
