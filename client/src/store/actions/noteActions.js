@@ -2,17 +2,30 @@ import fetch from 'isomorphic-fetch';
 import { BrowserRouter } from 'react-router-dom'
 import throttleAction from 'throttle-action'
 
+function handleErrors(response) {
+  if (!response.ok) {
+      errorNotify();
+  }
+  return response
+}
+
+function errorNotify(){
+  alert("Something went wrong! Terribly sorry!")
+}
+
 //Through dispatch, tells store that it is fetching notes from API. Fetches notes. 
 //Dispatches notes to update store.
 export function fetchNotes(){
   return function(dispatch) {
     dispatch({type: 'LOADING_NOTES'})
     return fetch('/notes/')
-    .then(res => {
-      return res.json()
-    }).then(responseJson => {
+    .then(handleErrors)
+    .then(res => {return res.json()
+    })
+    .then(responseJson => {
       dispatch({type: 'FETCH_NOTES', payload: responseJson})
     })
+    .catch(error => errorNotify())
   }
 }
 
@@ -25,7 +38,9 @@ export function createNote(values, history){
       headers: { 'Content-Type': 'application/json' }
     }
     fetch(`/notes`, request)
-      .then(response => response.json())
+      .then(handleErrors)
+      .then(res => res.json())
+      .catch(error => errorNotify())
     history.push("/")
     return dispatch => {
         dispatch(fetchNotes())
@@ -44,7 +59,9 @@ export function updateNote(values, history, id){
   }
   history.push(`/notes/${id}/edited`)
   fetch(`/notes/${id}`, request)
+  .then(handleErrors)
   .then(response => response.json())
+  .catch(error => errorNotify())
   return dispatch => {
     setTimeout(() => {
       dispatch(fetchNotes())
@@ -65,6 +82,8 @@ export function deleteNote(id, history){
     history.push(`/notes/${id}/deleted`)
     return dispatch => {
         fetch(`/notes/${id}`, request)
+        .then(handleErrors)
+        .catch(error => errorNotify())
       setTimeout(() => {
         dispatch(thunkPushAfterDelete(history));
       }, 10000)
@@ -95,7 +114,9 @@ const request = {
   }
 }
 fetch(`/notes/${id}`, request)
+.then(handleErrors)
 .then(response => response.json())
+.catch(error => errorNotify())
 return dispatch => {
   setTimeout(() => {
     dispatch(fetchNotes())
