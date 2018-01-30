@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from './store/actions/noteActions.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotesIndexContainer from './containers/Note/NotesIndexContainer';
 import NoteShowContainer from './containers/Note/NoteShowContainer';
@@ -30,12 +28,4 @@ class App extends Component {
   }
 }
 
-function mapStatetoProps(state) {
-  return {notes: state.notes.notes}
-}
-
-function mapDispatchtoProps(dispatch){
-  return {actions: bindActionCreators(actions,dispatch)}
-}
-
-export default connect(mapStatetoProps, mapDispatchtoProps)(App)
+export default connect(null)(App)
