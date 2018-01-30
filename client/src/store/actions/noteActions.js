@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import { BrowserRouter } from 'react-router-dom'
+import throttleAction from 'throttle-action'
 
 //Through dispatch, tells store that it is fetching notes from API. Fetches notes. 
 //Dispatches notes to update store.
@@ -76,3 +77,22 @@ export function thunkPushAfterDelete(history){
   }
 
   }
+
+export function save(values, id){
+const request = {
+  method: 'PATCH',
+  body: JSON.stringify(values),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+fetch(`/notes/${id}`, request)
+.then(response => response.json())
+return dispatch => {
+  setTimeout(() => {
+    dispatch(fetchNotes())
+  }, 300)
+}
+
+  
+}

@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom"
+import throttleAction from 'throttle-action'
 
 class EditNoteContainer extends React.Component {
   //Sets state to include props and all data in state as empty strings.
@@ -37,6 +38,12 @@ class EditNoteContainer extends React.Component {
     this.setState({ [name]: value })
   }
 
+  autoSave = (e) => {
+  const values = this.state;
+  const id = this.props.id
+  this.props.actions.save(values, id)
+  }
+
   //Passes in history through withRouter, the state, and the id of the note, 
   //instead of submitting form regularly, calls action to update note with that data.
 
@@ -55,8 +62,8 @@ class EditNoteContainer extends React.Component {
     return (
       <div>
       <form onSubmit = {(e) => this.submitForm(e)} >
-          <h2> Edit {this.state.title}! </h2>
-          <h2>Edit Note Title:</h2><br />
+          <h2> Edit {this.state.title}! </h2> <br/>
+          <h3>Edit Note Title:</h3>
           <input type="text"
             name="title"
             value={this.state.title}
@@ -67,7 +74,7 @@ class EditNoteContainer extends React.Component {
           <input type="text"
             name="body"
             value={this.state.body}
-            onChange={this.handleChange} 
+            onChange = {(e) => {this.handleChange(e);throttleAction(this.autoSave(e), 30000)}}
             required />
           <button>Submit</button>
         </form>
