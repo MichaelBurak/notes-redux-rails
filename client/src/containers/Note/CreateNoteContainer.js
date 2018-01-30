@@ -18,18 +18,11 @@ class CreateNoteContainer extends React.Component {
     };
   }
 
-  //Two onChange events changing the state based on input in form. 
+  //onChange event to handle form input into state change.
 
-  changeText(e) {
-    this.setState({
-      title: e.target.value
-    });
-  }
-
-  changeBody(e){
-    this.setState({
-      body: e.target.value
-    })
+  handleChange = (e) => {
+    const {name, value} = e.target
+    this.setState({[name]: value})
   }
 
   //Pulls in history from router as prop, passes state set by both onChange functions
@@ -52,9 +45,9 @@ class CreateNoteContainer extends React.Component {
       <form onSubmit = {(e) => this.submitForm(e)} >
       <h2> Create a New Note! </h2>
       Note Title:<br/>
-      <input type="text" name="title" value={this.state.title} onChange={(e) => this.changeText(e)} required /> <br/>
+      <input type="text" name="title" value={this.state.title} onChange={this.handleChange} required /> <br/>
       Note Content:<br/>
-      <input type="text" name="body" value={this.state.body} onChange={(e) => this.changeBody(e)} required />
+      <input type="text" name="body" value={this.state.body} onChange={this.handleChange} required />
       <button>Submit
       </button>
       </form>
@@ -74,5 +67,5 @@ class CreateNoteContainer extends React.Component {
   }
 
   //Connects component to redux store.
-  
+
   export default connect(mapStateToProps, mapDispatchToProps)(CreateNoteContainer)
