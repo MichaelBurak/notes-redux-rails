@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch';
 import { BrowserRouter } from 'react-router-dom'
 
+//Through dispatch, tells store that it is fetching notes from API. Fetches notes. 
+//Dispatches notes to update store.
 export function fetchNotes(){
   return function(dispatch) {
     dispatch({type: 'LOADING_NOTES'})
@@ -13,6 +15,8 @@ export function fetchNotes(){
   }
 }
 
+//Takes in form values and history prop, posts new values of Note to API. 
+//Pushes to root directory and dispatches collection of index data.
 export function createNote(values, history){
     const request = {
       method: 'POST',
@@ -27,6 +31,10 @@ export function createNote(values, history){
   }
     }
 
+//Takes in same args as createNote, and id of Note being updated. Throws API 
+//patch request to appropriate route. 
+//Pushes to page with info on the edited info. 
+//After 3 seconds, gets info on note. As of yet, can not guarantee display without timer.
 export function updateNote(values, history, id){
   const request = {
     method: 'PATCH',
@@ -43,6 +51,9 @@ export function updateNote(values, history, id){
     }
     }
 
+//Takes in id of specific note and history prop. Pushes to page displaying info on 
+//the deleted note. Deletes note through fetch request. After 10 seconds, dispatches
+//function to push to root and render updated index.
 export function deleteNote(id, history){
   const request = {
     method: 'delete'
@@ -58,12 +69,14 @@ export function deleteNote(id, history){
     }
   }
 
+//Called by deleteNote as thunk async action. Pushes to root and displays accurate
+//index via fetchNotes()
 export function thunkPushAfterDelete(history){
   history.push("/")
   return function(dispatch) {
-  setTimeout(() => {
+  //setTimeout(() => {
     dispatch(fetchNotes())
-  }, 10)
+  //}, 10)
   }
 
   }
