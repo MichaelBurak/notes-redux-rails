@@ -5,7 +5,7 @@ import React from 'react';
 import DeletedNote from '../../components/DeletedNote';
 import { connect } from 'react-redux';
 
-const DeletedNoteContainer = ({ note }, props) =>
+const DeletedNoteContainer = ({ note }) =>
 <DeletedNote
 note = {note}/>
 
