@@ -8,6 +8,7 @@ const UpdatedNote = ({note}) =>
     <h1> You have updated your note! Here is the updated note - </h1>
     <h3>Title: {note.title}</h3>
     <p>{note.body}</p>
+    This page will re-render in 10 seconds.
   </div>
 
 export default UpdatedNote

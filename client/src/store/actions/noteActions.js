@@ -49,6 +49,9 @@ export function updateNote(values, history, id){
     setTimeout(() => {
       dispatch(fetchNotes())
   }, 300)
+    setTimeout(() => {
+      dispatch(thunkPushAfterChange(history));
+  }, 10000)
 }
 }
 
@@ -75,8 +78,13 @@ export function thunkPushAfterDelete(history){
   return function(dispatch) {
     dispatch(fetchNotes())
   }
+}
 
+export function thunkPushAfterChange(history) {
+  return function(dispatch){
+    history.push("/")
   }
+}
 
 export function save(values, id){
 const request = {
