@@ -43,13 +43,13 @@ class EditNoteContainer extends React.Component {
       <div>
         <form>
           <h2> Edit {this.state.title}! </h2>
-          <h2>Edit Post Title:</h2><br />
+          <h2>Edit Note Title:</h2><br />
           <input type="text"
             name="title"
             value={this.state.title}
             onChange={this.handleChange} />
           <br />
-          <h3> Edit Post Content:</h3>
+          <h3> Edit Note Content:</h3>
           <input type="text"
             name="body"
             value={this.state.body}

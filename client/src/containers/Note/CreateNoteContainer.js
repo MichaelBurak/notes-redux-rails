@@ -25,6 +25,7 @@ class CreateNoteContainer extends React.Component {
   }
 
   submitForm(e){
+        debugger 
         const history = this.props.history
         const values = this.state;
         this.props.actions.createNote(values, history);
@@ -35,11 +36,11 @@ class CreateNoteContainer extends React.Component {
     return (
       <div>
       <form>
-      <h2> Create a New Post! </h2>
-      Post Title:<br/>
-      <input type="text" name="title" value={this.state.title} onChange={(e) => this.changeText(e)}/> <br/>
-      Post Content:<br/>
-      <input type="text" name="body" value={this.state.body} onChange={(e) => this.changeBody(e)}/>
+      <h2> Create a New Note! </h2>
+      Note Title:<br/>
+      <input type="text" name="title" value={this.state.title} onChange={(e) => this.changeText(e)} required /> <br/>
+      Note Content:<br/>
+      <input type="text" name="body" value={this.state.body} onChange={(e) => this.changeBody(e)} required />
       <button
       type= 'button'
       onClick = {(e) => this.submitForm(e)}>Submit
