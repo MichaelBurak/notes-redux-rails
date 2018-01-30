@@ -35,7 +35,6 @@ class EditNoteContainer extends React.Component {
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({ [name]: value })
-    e.preventDefault()
   }
 
   //Passes in history through withRouter, the state, and the id of the note, 
