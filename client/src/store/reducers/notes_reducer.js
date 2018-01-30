@@ -1,9 +1,14 @@
-const initialState = {notes: []}
+const initialState = {
+  notes: [],
+  loading: false
+}
 
 export default function notesReducer(state= initialState, action) {
   switch ( action.type ) {
+    case 'LOADING_NOTES':
+      return Object.assign({}, state, {loading: true})
     case 'FETCH_NOTES':
-      return {...state, notes: action.payload}
+      return {...state, {loading: false}, notes: action.payload}
     default:
       return state;
   }
