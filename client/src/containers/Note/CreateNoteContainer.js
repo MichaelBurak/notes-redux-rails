@@ -25,7 +25,6 @@ class CreateNoteContainer extends React.Component {
   }
 
   submitForm(e){
-        debugger 
         const history = this.props.history
         const values = this.state;
         this.props.actions.createNote(values, history);
