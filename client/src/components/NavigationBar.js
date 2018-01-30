@@ -1,3 +1,6 @@
+//Presentational component:
+//Displays simple links to index and create route.
+
 import {Navbar, NavItem, Nav} from 'react-bootstrap'
 import React from 'react'
 

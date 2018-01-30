@@ -1,3 +1,6 @@
+//Uses ownProps from router to locate proper note from store, displays presentational
+//deleted note component with proper note passed down as prop.
+
 import React from 'react';
 import DeletedNote from '../../components/DeletedNote';
 import { connect } from 'react-redux';

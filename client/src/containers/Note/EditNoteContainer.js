@@ -1,3 +1,5 @@
+//Stateful component responsible for editing notes.
+
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
@@ -5,16 +7,20 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom"
 
 class EditNoteContainer extends React.Component {
+  //Sets state to include props and all data in state as empty strings.
+
   constructor(props) {
     super(props)
 
     this.state = {
       id: '',
       title: '',
-      body: '',
-      updated: null
+      body: ''
     }
   }
+
+  //When component will mount, takes in passed in props from Note presentational, 
+  //received from NotesIndex, to set state to proper note being edited's data. 
 
   componentWillMount() {
     this.setState({
@@ -24,11 +30,16 @@ class EditNoteContainer extends React.Component {
     })
   }
 
+  //When changing form, sets state to reflect change on form. 
+
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({ [name]: value })
     e.preventDefault()
   }
+
+  //Passes in history through withRouter, the state, and the id of the note, 
+  //instead of submitting form regularly, calls action to update note with that data.
 
   submitForm(e) {
     const history = this.props.history
@@ -37,6 +48,9 @@ class EditNoteContainer extends React.Component {
     this.props.actions.updateNote(values, history, id)
     e.preventDefault();
   }
+
+  //Form for editing note initially populated by note's contents, later changed by
+  //user as state is set. Fields require text through HTML required. 
 
   render() {
     return (
@@ -62,9 +76,13 @@ class EditNoteContainer extends React.Component {
     )}
   }
 
+  //Allows for access to actions.
+
     function mapDispatchToProps(dispatch){
       return {actions: bindActionCreators(actions,dispatch)}
     }
+
+//Exports with knowledge of withRouter and actions.
 
   export default withRouter(
     connect(null, mapDispatchToProps)(EditNoteContainer)

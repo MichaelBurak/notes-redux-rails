@@ -1,3 +1,6 @@
+//Main App component. Displays navigation bar on all displayed components and handles 
+//routing.
+
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';

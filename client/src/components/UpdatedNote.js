@@ -1,3 +1,6 @@
+//Presentational component: 
+//Shows an updated note before rerendering through thunk action.
+
 import React from 'react'
 
 const UpdatedNote = ({note}) =>

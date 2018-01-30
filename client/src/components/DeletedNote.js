@@ -1,3 +1,6 @@
+//Presentational component:
+//Displays a single deleted note and then through actions returns to root.
+
 import React from 'react'
 
 const DeletedNote = ({note}) =>

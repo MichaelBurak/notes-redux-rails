@@ -11,8 +11,12 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+//Creates store and allows for use of thunk middleware for async actions.
+
 const store = createStore(
   rootReducer, composeEnhancers(applyMiddleware(thunk)))
+
+//Renders App and allows for access to store throughout via provider and passing of store.
 
 ReactDOM.render(
   <Provider store = {store} >
