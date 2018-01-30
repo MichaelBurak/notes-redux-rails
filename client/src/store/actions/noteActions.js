@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 export function fetchNotes(){
   return function(dispatch) {
+    dispatch({type: 'LOADING_NOTES'})
     return fetch('/notes/')
     .then(res => {
       return res.json()
@@ -22,9 +23,7 @@ export function createNote(values, history){
       .then(response => response.json())
     history.push("/")
     return dispatch => {
-      setTimeout(() => {
         dispatch(fetchNotes())
-      }, 300)
   }
     }
 
