@@ -43,13 +43,13 @@ export function updateNote(values, history, id){
   }
   history.push(`/notes/${id}/edited`)
   fetch(`/notes/${id}`, request)
-    .then(response => response.json())
-    return dispatch => {
-      setTimeout(() => {
-        dispatch(fetchNotes())
-      }, 300)
-    }
-    }
+  .then(response => response.json())
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(fetchNotes())
+  }, 300)
+}
+}
 
 //Takes in id of specific note and history prop. Pushes to page displaying info on 
 //the deleted note. Deletes note through fetch request. After 10 seconds, dispatches
