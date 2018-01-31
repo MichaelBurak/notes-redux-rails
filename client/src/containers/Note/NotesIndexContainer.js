@@ -32,7 +32,7 @@ render() {
 //Gives access to notes in store.
 
 function mapStateToProps(state) {
-  return {notes: state.notes.notes}
+  return {notes: state.notePad.notes}
 }
 
 //Gives access to actions, specifically fetchNotes() in this case.

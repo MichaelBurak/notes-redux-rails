@@ -12,7 +12,7 @@ note = {note}/>
 //passed to presentational.
 
 const mapStateToProps = (state, ownProps) => {
-  const note = state.notes.notes.find(note => note.id == ownProps.match.params.id)
+  const note = state.notePad.notes.find(note => note.id == ownProps.match.params.id)
 
   if (note) {
     return { note }

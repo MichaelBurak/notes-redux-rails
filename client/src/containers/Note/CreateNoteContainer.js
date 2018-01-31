@@ -57,7 +57,7 @@ class CreateNoteContainer extends React.Component {
   }
 
   function mapStateToProps(state) {
-    return {notes: state.notes.notes}
+    return {notes: state.notePad.notes}
   }
 
   //Allows actions to be accessed as props at this.props.actions.[action]
