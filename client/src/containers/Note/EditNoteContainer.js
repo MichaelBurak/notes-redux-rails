@@ -6,6 +6,7 @@ import * as actions from '../../store/actions/noteActions.js'
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom"
 import throttleAction from 'throttle-action'
+import {Grid, Row, Col} from 'react-bootstrap'
 
 class EditNoteContainer extends React.Component {
   //Sets state to include props and all data in state as empty strings.
@@ -29,6 +30,7 @@ class EditNoteContainer extends React.Component {
       title: this.props.title,
       body: this.props.body
     })
+    
   }
 
   //When changing form, sets state to reflect change on form. 
@@ -61,6 +63,9 @@ class EditNoteContainer extends React.Component {
   render() {
     return (
       <div>
+      <Grid>
+      <Row className="show-grid">
+      <Col sm={6} md={3}>
       <form onSubmit = {(e) => this.submitForm(e)} >
           <h2> Edit {this.state.title}! </h2> <br/>
           <h3>Edit Note Title:</h3>
@@ -78,6 +83,9 @@ class EditNoteContainer extends React.Component {
             required />
           <button>Submit</button>
         </form>
+        </Col>
+        </Row>
+        </Grid>
       </div>
     )}
   }
