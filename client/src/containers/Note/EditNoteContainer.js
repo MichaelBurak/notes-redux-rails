@@ -15,23 +15,23 @@ class EditNoteContainer extends React.Component {
     super(props)
 
     this.state = {
-      id: '',
       title: '',
       body: ''
-    }
   }
+}
 
   //When component will mount, takes in passed in props from Note presentational, 
   //received from NotesIndex, to set state to proper note being edited's data. 
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({
       id: this.props.id,
       title: this.props.title,
       body: this.props.body
     })
+    setTimeout(()=> this.startCycle(), 300)
+    }
     
-  }
 
   //When changing form, sets state to reflect change on form. 
 
@@ -40,12 +40,24 @@ class EditNoteContainer extends React.Component {
     this.setState({ [name]: value })
   }
 
-  autoSave = (e) => {
+  startCycle = () => {
+    const stateA = this.state
+    setTimeout(()=> this.checkCycle(stateA), 10000)
+  }
+
+  checkCycle(stateA) {
+  const stateB= this.state 
+  stateA === stateB ? this.startCycle() : this.autoSave()
+  }
+
+autoSave = (e) => {
   const values = this.state;
   const id = this.props.id
   this.props.actions.save(values, id)
-  }
+  this.startCycle()
+}
 
+  
   //Passes in history through withRouter, the state, and the id of the note, 
   //instead of submitting form regularly, calls action to update note with that data.
 
@@ -79,10 +91,12 @@ class EditNoteContainer extends React.Component {
           <input type="text"
             name="body"
             value={this.state.body}
-            onChange = {(e) => {this.handleChange(e);throttleAction(this.autoSave(e), 30000)}}
+            onChange = {(e) => {this.handleChange(e)}}
             required />
           <button>Submit</button>
         </form>
+        Protip: This page will autosave your note if it is edited every 10 seconds. 
+        Just watch!
         </Col>
         </Row>
         </Grid>
