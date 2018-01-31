@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom"
-import throttleAction from 'throttle-action'
 import {Grid, Row, Col} from 'react-bootstrap'
 
 class EditNoteContainer extends React.Component {
@@ -22,6 +21,7 @@ class EditNoteContainer extends React.Component {
 
   //When component will mount, takes in passed in props from Note presentational, 
   //received from NotesIndex, to set state to proper note being edited's data. 
+  //Wait shortly for all elements to be set and then start checking for changes.
 
   componentDidMount() {
     this.setState({
@@ -40,17 +40,27 @@ class EditNoteContainer extends React.Component {
     this.setState({ [name]: value })
   }
 
+  //Store local state in constant. In 10 seconds, pass local state into checking 
+  //for autosaving or not.
+
   startCycle = () => {
     const stateA = this.state
     setTimeout(()=> this.checkCycle(stateA), 10000)
   }
+
+  //Compare passed in state from 10 seconds ago to current state set as variable.
+  //If same, start new cycle. If note has been changed, trigger autosave.
 
   checkCycle(stateA) {
   const stateB= this.state 
   stateA === stateB ? this.startCycle() : this.autoSave()
   }
 
-autoSave = (e) => {
+  //Mirrors submission of form, except call to save action for re-render on other
+  //component on page of new note through .save and starting a new checking cycle 
+  //for seeing if note should autosave.
+  
+  autoSave = (e) => {
   const values = this.state;
   const id = this.props.id
   this.props.actions.save(values, id)
