@@ -5,18 +5,13 @@ import React from 'react';
 import DeletedNote from '../../components/DeletedNote';
 import { connect } from 'react-redux';
 
-const DeletedNoteContainer = ({ note }) =>
+const DeletedNoteContainer = ({ deletedNote }) =>
 <DeletedNote
-note = {note}/>
+deletedNote = {deletedNote}/>
 
-const mapStateToProps = (state, ownProps) => {
-  const note = state.notePad.notes.find(note => note.id == ownProps.match.params.id)
-
-  if (note) {
-    return { note }
-  } else {
-    return { note: {} }
-  }
+const mapStateToProps = (state) => {
+  const deletedNote = state.notePad.deletedNote
+    return { deletedNote }
 }
 
 export default connect(mapStateToProps)(DeletedNoteContainer);
