@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
 import { BrowserRouter } from 'react-router-dom'
-import throttleAction from 'throttle-action'
 
 function handleErrors(response) {
   if (!response.ok) {
@@ -20,8 +19,8 @@ export function fetchNotes(){
     dispatch({type: 'LOADING_NOTES'})
     return fetch('/notes/')
     .then(handleErrors)
-    .then(res => {return res.json()
-    })
+    .then(res => res.json()
+    )
     .then(responseJson => {
       dispatch({type: 'FETCH_NOTES', payload: responseJson})
     })
@@ -37,39 +36,43 @@ export function createNote(values, history){
       body: JSON.stringify(values),
       headers: { 'Content-Type': 'application/json' }
     }
-    fetch(`/notes`, request)
+    return function(dispatch) {
+      dispatch({type: 'LOADING_NOTES'})
+      return fetch(`/notes`, request)
       .then(handleErrors)
       .then(res => res.json())
+      .then(responseJson => {
+        dispatch({type: 'CREATE_NOTE', payload: responseJson})
+      })
       .catch(error => errorNotify())
-    history.push("/")
-    return dispatch => {
-        dispatch(fetchNotes())
-  }
+      .then(history.push("/"))
+    }
     }
 
 //Takes in same args as createNote, and id of Note being updated. Throws API 
 //patch request to appropriate route. 
 //Pushes to page with info on the edited info. 
-//After 3 seconds, gets info on note. As of yet, can not guarantee display without timer.
+//Gets info on note.
 export function updateNote(values, history, id){
   const request = {
     method: 'PATCH',
     body: JSON.stringify(values),
     headers: { 'Content-Type': 'application/json' }
   }
-  history.push(`/notes/${id}/edited`)
+  return function(dispatch){
+  dispatch({type: 'LOADING_NOTES'})
   fetch(`/notes/${id}`, request)
   .then(handleErrors)
-  .then(response => response.json())
+  .then(res => res.json())
+  .then(responseJson => {
+    dispatch({type: 'UPDATE_NOTE', payload: responseJson})
+  })
   .catch(error => errorNotify())
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(fetchNotes())
-  }, 300)
-    setTimeout(() => {
-      dispatch(thunkPushAfterChange(history));
+  .then(history.push(`/notes/${id}/edited`))
+  setTimeout(() => {
+  history.push("/");
   }, 10000)
-}
+  }
 }
 
 //Takes in id of specific note and history prop. Pushes to page displaying info on 
@@ -80,30 +83,22 @@ export function deleteNote(id, history){
     method: 'delete'
   }
     history.push(`/notes/${id}/deleted`)
-    return dispatch => {
+    return function(dispatch) {
+        dispatch({type: 'LOADING_NOTES'})
         fetch(`/notes/${id}`, request)
         .then(handleErrors)
+        .then(res => res.json())
+        .then(responseJson => {
+          dispatch({type: 'DELETE_NOTE', payload: responseJson})
+        })
         .catch(error => errorNotify())
-      setTimeout(() => {
-        dispatch(thunkPushAfterDelete(history));
+        setTimeout(() => {
+        history.push("/");
+        dispatch({type: 'CLEAR_DELETED_NOTE'})
       }, 10000)
+      
     }
   }
-
-//Called by deleteNote as thunk async action. Pushes to root and displays accurate
-//index via fetchNotes()
-export function thunkPushAfterDelete(history){
-  history.push("/")
-  return function(dispatch) {
-    dispatch(fetchNotes())
-  }
-}
-
-export function thunkPushAfterChange(history) {
-  return function(dispatch){
-    history.push("/")
-  }
-}
 
 export function save(values, id){
 const request = {
