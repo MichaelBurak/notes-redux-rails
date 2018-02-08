@@ -49,7 +49,7 @@ class CreateNoteContainer extends React.Component {
       Note Title:<br/>
       <input type="text" name="title" value={this.state.title} onChange={this.handleChange} required /> <br/>
       Note Content:<br/>
-      <input type="text" name="body" value={this.state.body} onChange={this.handleChange} required />
+      <textarea rows="10" cols="25" name="body" value={this.state.body} onChange={this.handleChange} required />
       <button>Submit
       </button>
       </form>
