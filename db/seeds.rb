@@ -9,3 +9,7 @@
 Note.create(title: 'Notes!', body: 'A note app! Try it out!' )
 Note.create(title: "CRUDdy app!", body: 'Enjoy that you can delete your mistakes and change your mind too!' )
 Note.create(title: "Redux!", body: 'Is awesome!')
+Note.create(title: "Thin", body: "It's pretty simple!")
+Note.create(title: "Stylin", body: "But it's got some styling!")
+Note.create(title: "Loading", body: "It's got a little loading page you might see!")
+Note.create(title: "Confirmations", body: "And when you delete or update a note, you'll know it!")
