@@ -85,9 +85,6 @@ class EditNoteContainer extends React.Component {
   render() {
     return (
       <div>
-      <Grid>
-      <Row className="show-grid">
-      <Col sm={6} md={3}>
       <form onSubmit = {(e) => this.submitForm(e)} >
           <h2> Edit {this.state.title}! </h2> <br/>
           <h3>Edit Note Title:</h3>
@@ -98,7 +95,7 @@ class EditNoteContainer extends React.Component {
             required />
           <br />
           <h3> Edit Note Content:</h3>
-          <input type="text"
+          <textarea rows="10" cols="25" name="body"
             name="body"
             value={this.state.body}
             onChange = {(e) => {this.handleChange(e)}}
@@ -107,9 +104,6 @@ class EditNoteContainer extends React.Component {
         </form>
         Protip: This page will autosave your note if it is edited every 10 seconds. 
         Just watch!
-        </Col>
-        </Row>
-        </Grid>
       </div>
     )}
   }
