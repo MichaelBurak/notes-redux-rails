@@ -42,6 +42,8 @@ class CreateNoteContainer extends React.Component {
   render() {
     return (
       <div>
+      {
+      this.props.loading? <h1>Loading page...</h1> :
       <form onSubmit = {(e) => this.submitForm(e)} >
       <h2> Create a New Note! </h2>
       Note Title:<br/>
@@ -51,13 +53,14 @@ class CreateNoteContainer extends React.Component {
       <button>Submit
       </button>
       </form>
+      }
       </div>
     )
   }
   }
 
   function mapStateToProps(state) {
-    return {notes: state.notePad.notes}
+    return {notes: state.notePad.notes, loading: state.notePad.loading}
   }
 
   //Allows actions to be accessed as props at this.props.actions.[action]
