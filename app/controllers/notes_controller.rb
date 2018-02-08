@@ -30,7 +30,9 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
-    @note.delete
+    if @note.delete
+      render json: @note
+    end 
   end
 
 private
