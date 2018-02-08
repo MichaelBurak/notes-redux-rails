@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch';
-import { BrowserRouter } from 'react-router-dom'
 
 function handleErrors(response) {
   if (!response.ok) {
