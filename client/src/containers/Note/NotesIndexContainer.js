@@ -8,10 +8,8 @@ import * as actions from '../../store/actions/noteActions';
 import { Link } from 'react-router-dom';
 
 class NotesIndexContainer extends React.Component {
-  
-  //On mount, grab all notes for display.
-  
-  componentWillMount() {
+
+componentDidMount() {
   if (this.props.notes.length === 0) {
     this.props.actions.fetchNotes()
   }
@@ -22,8 +20,12 @@ class NotesIndexContainer extends React.Component {
 render() {
   return (
     <div>
-    <Notes
-    notes= {this.props.notes}/>
+{
+  this.props.loading
+    ? <h1>Loading page...</h1>
+    : <Notes notes={this.props.notes}/>
+}
+    
     </div>
   )
 }
@@ -32,7 +34,7 @@ render() {
 //Gives access to notes in store.
 
 function mapStateToProps(state) {
-  return {notes: state.notePad.notes}
+  return {notes: state.notePad.notes, loading: state.notePad.loading}
 }
 
 //Gives access to actions, specifically fetchNotes() in this case.
