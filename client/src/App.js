@@ -15,17 +15,11 @@ import * as actions from './store/actions/noteActions';
 
 class App extends Component {
 
-  componentWillMount() {
-  if (this.props.notes.length === 0) {
-    this.props.actions.fetchNotes()
-  }
-}
-
   render() {
     return (
+    <Router> 
     <div>
     <NavigationBar />
-    <Router>
     <Switch>
     <Route path="/" exact component={NotesIndexContainer} />
     <Route exact path={`/notes/new`} component={CreateNoteContainer} />
@@ -33,25 +27,10 @@ class App extends Component {
     <Route exact path={`/notes/:id/deleted`} exact component= {DeletedNoteContainer} />
     <Route path={`/notes/:id`} component={NoteShowContainer} />
     </Switch>
+    </div>    
     </Router>
-    </div>
     );
   }
 }
 
-//Gives access to notes in store.
-
-function mapStateToProps(state) {
-  return {notes: state.notePad.notes}
-}
-
-//Gives access to actions, specifically fetchNotes() in this case.
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App 
