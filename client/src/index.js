@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './store/reducers'
 import registerServiceWorker from './registerServiceWorker';
 import App from './App'
-import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
