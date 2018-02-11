@@ -5,30 +5,28 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Notes from '../../components/Notes'
 import * as actions from '../../store/actions/noteActions';
-import { Link } from 'react-router-dom';
 
 class NotesIndexContainer extends React.Component {
 
-componentDidMount() {
-  if (this.props.notes.length === 0) {
-    this.props.actions.fetchNotes()
+  componentDidMount() {
+    if (this.props.notes.length === 0) {
+      this.props.actions.fetchNotes()
+    }
   }
-}
 
-//Renders Notes presentational with data passed down through store to props below.
+  // Renders Notes presentational with data passed down through store to props
+  // below.
 
-render() {
-  return (
-    <div>
-{
-  this.props.loading
-    ? <h1>Loading page...</h1>
-    : <Notes notes={this.props.notes}/>
+  render() {
+    return (
+      <div>
+        {this.props.loading
+          ? <h1>Loading page...</h1>
+          : <Notes notes={this.props.notes}/>
 }
-    
-    </div>
-  )
-}
+      </div>
+    )
+  }
 }
 
 //Gives access to notes in store.
@@ -39,8 +37,10 @@ function mapStateToProps(state) {
 
 //Gives access to actions, specifically fetchNotes() in this case.
 
-function mapDispatchToProps(dispatch){
-  return {actions: bindActionCreators(actions,dispatch)}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
 }
 
 //Connects to store.

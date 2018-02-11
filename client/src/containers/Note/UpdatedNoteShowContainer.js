@@ -2,22 +2,20 @@
 
 import React from 'react';
 import UpdatedNote from '../../components/UpdatedNote'
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-const UpdatedNoteShowContainer = ({ note }, props) =>
-<UpdatedNote
-note = {note}/>
+const UpdatedNoteShowContainer = ({note}, props) => <UpdatedNote note={note}/>
 
-//Contacts store using router ownProps to locate corresponding note to URL to be 
-//passed to presentational.
+// Contacts store using router ownProps to locate corresponding note to URL to be
+// passed to presentational.
 
 const mapStateToProps = (state, ownProps) => {
   const note = state.notePad.notes.find(note => note.id == ownProps.match.params.id)
 
   if (note) {
-    return { note }
+    return {note}
   } else {
-    return { note: {} }
+    return {note: {}}
   }
 }
 

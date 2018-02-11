@@ -1,20 +1,15 @@
 import React from 'react';
 import Note from '../../components/Note';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-//Introspects through router for corresponding note to URL path, passes down
-//appropriate data as note constant to Note presentational. 
+// Introspects through router for corresponding note to URL path, passes down
+// appropriate data as note constant to Note presentational.
 
-const NoteShowContainer = (props) => 
-
-< div > {
+const NoteShowContainer = (props) => < div > {
   props.loading
     ? <h1>Loading page...</h1>
-    :
-<Note
-note = {props.note}/>
-}
-</div>
+    : <Note note={props.note}/>
+} </div>
 
 const mapStateToProps = (state, ownProps) => {
   const note = state.notePad.notes.find(note => note.id == ownProps.match.params.id)

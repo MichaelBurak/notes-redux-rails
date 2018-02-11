@@ -2,7 +2,6 @@
 //routing.
 
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotesIndexContainer from './containers/Note/NotesIndexContainer';
 import NoteShowContainer from './containers/Note/NoteShowContainer';
@@ -10,8 +9,6 @@ import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 import UpdatedNoteShowContainer from './containers/Note/UpdatedNoteShowContainer';
 import DeletedNoteContainer from './containers/Note/DeletedNoteContainer'
 import NavigationBar from './components/NavigationBar'
-import {bindActionCreators} from 'redux';
-import * as actions from './store/actions/noteActions';
 
 class App extends Component {
 

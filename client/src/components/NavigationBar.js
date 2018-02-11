@@ -1,19 +1,21 @@
-//Presentational component:
-//Displays simple links to index and create route on all pages.
+// Presentational component: Displays simple links to index and create route on
+// all pages.
 
 import {Navbar, NavItem, Nav, NavLink} from 'reactstrap'
 import React from 'react'
-import {withRouter, Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 
-const NavigationBar = () =>
-
-<Navbar>
+const NavigationBar = () => <Navbar>
   <Nav>
     <NavItem>
-    <NavLink> <Link to={"/"}>Return to Index</Link></NavLink>
+      <NavLink>
+        <Link to={"/"}>Return to Index</Link>
+      </NavLink>
     </NavItem>
     <NavItem>
-    <NavLink><Link to={"/notes/new"}>Create a new note!</Link></NavLink>
+      <NavLink>
+        <Link to={"/notes/new"}>Create a new note!</Link>
+      </NavLink>
     </NavItem>
   </Nav>
 </Navbar>;
