@@ -6,6 +6,7 @@ import * as actions from '../store/actions/noteActions.js'
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom"
 import {bindActionCreators} from 'redux'
+import {Button} from 'reactstrap'
 
 class Note extends React.Component{
 
@@ -29,9 +30,9 @@ class Note extends React.Component{
   <div>
     <h3>Current Note Title: {this.props.note.title}</h3>
     <p>{this.props.note.body}</p>
-    <button
+    <Button
       type='button'
-      onClick={(e) => this.delete(e)}>Delete Note</button> <br/> <br/> <br/>
+      onClick={(e) => this.delete(e)}>Delete Note</Button> <br/> <br/> <br/>
     <EditNoteContainer
     id={this.props.note.id}
     title={this.props.note.title}
