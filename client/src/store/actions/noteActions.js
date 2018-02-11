@@ -7,8 +7,9 @@ function handleErrors(response) {
   return response
 }
 
-function errorNotify(){
-  alert("Something went wrong! Terribly sorry!")
+function errorNotify(dispatch){
+  //alert("Something went wrong! Terribly sorry!")
+  dispatch({type: 'ERROR_NOTIFICATION'})
 }
 
 //Through dispatch, tells store that it is fetching notes from API. Fetches notes. 

@@ -3,7 +3,8 @@
 const initialState = {
   notes: [],
   loading: false,
-  deletedNote: {}
+  deletedNote: {},
+  errorPresent: false
 }
 
 //Passes initial state and ability to have actions into reducer, switch case of types 
@@ -29,6 +30,8 @@ export default function notesReducer(state= initialState, action) {
       return {...state, loading: false, deletedNote: action.payload, notes: state.notes.filter(note => action.payload.id !== note.id)}
     case 'CLEAR_DELETED_NOTE':
       return {...state, deletedNote: {}}
+    case 'ERROR_NOTIFICATION':
+      return {...state, errorPresent: true}
     default:
       return state;
   }
