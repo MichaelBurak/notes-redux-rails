@@ -4,7 +4,7 @@ import React from 'react';
 import UpdatedNote from '../../components/UpdatedNote'
 import {connect} from 'react-redux';
 
-const UpdatedNoteShowContainer = ({note}, props) => <UpdatedNote note={note}/>
+const UpdatedNoteShowContainer = ({note}) => <UpdatedNote note={note}/>
 
 // Contacts store using router ownProps to locate corresponding note to URL to be
 // passed to presentational.
