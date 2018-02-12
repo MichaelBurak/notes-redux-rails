@@ -30,9 +30,9 @@ class CreateNoteContainer extends React.Component {
   // prevents default action of form.
 
   submitForm(e) {
-    const history = this.props.history
+    //const history = this.props.history
     const values = this.state;
-    this.props.actions.createNote(values, history);
+    this.props.actions.createNote(values);
     e.preventDefault();
   };
 
@@ -75,7 +75,7 @@ class CreateNoteContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {notes: state.notePad.notes}
+  return {notes: state.notePad.notes, loading: state.notePad.loading}
 }
 
 //Allows actions to be accessed as props at this.props.actions.[action]
