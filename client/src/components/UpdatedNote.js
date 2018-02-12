@@ -2,6 +2,7 @@
 // thunk action.
 
 import React from 'react'
+import {connect} from 'react-redux';
 
 const UpdatedNote = ({note}) => <div>
   <h1>
@@ -12,4 +13,16 @@ const UpdatedNote = ({note}) => <div>
   This page will re-render in 10 seconds.
 </div>
 
-export default UpdatedNote
+const mapStateToProps = (state, ownProps) => {
+  const note = state.notePad.notes.find(note => note.id == ownProps.match.params.id)
+
+  if (note) {
+    return {note}
+  } else {
+    return {note: {}}
+  }
+}
+
+//Connects to store.
+
+export default connect(mapStateToProps)(UpdatedNote);
