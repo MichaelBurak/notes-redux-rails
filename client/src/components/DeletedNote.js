@@ -2,6 +2,7 @@
 // actions returns to root.
 
 import React from 'react'
+import {connect} from 'react-redux';
 
 const DeletedNote = ({deletedNote}) => <div>
   <h1>
@@ -12,4 +13,22 @@ const DeletedNote = ({deletedNote}) => <div>
   This page will re-render in 10 seconds.
 </div>
 
-export default DeletedNote
+ const mapStateToProps = (state) => {
+   const deletedNote = state.notePad.deletedNote
+   return {deletedNote}
+ }
+ export default connect(mapStateToProps)(DeletedNote)
+
+
+//import React from 'react';
+// import DeletedNote from '../../components/DeletedNote';
+// import {connect} from 'react-redux';
+
+// const DeletedNoteContainer = ({deletedNote}) => <DeletedNote deletedNote={deletedNote}/>
+
+// const mapStateToProps = (state) => {
+//   const deletedNote = state.notePad.deletedNote
+//    return {deletedNote}
+//  }
+
+// export default connect(mapStateToProps)(DeletedNoteContainer);
