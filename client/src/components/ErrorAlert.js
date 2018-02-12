@@ -1,10 +1,10 @@
 import React from 'react'
 import {Alert} from 'reactstrap'
 
-const Error = (props) => <div>
+const ErrorAlert = (props) => <div>
     <Alert color="warning">
         Something has gone wrong! Terribly sorry!
     </Alert>
 </div>
 
-export default Error
+export default ErrorAlert
