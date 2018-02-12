@@ -3,32 +3,34 @@
 
 import React from 'react'
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux'
+import * as actions from '../store/actions/noteActions.js'
 
-const DeletedNote = ({deletedNote}) => <div>
+
+const DeletedNote = ({deletedNote, loading}) => {
+
+  return(
+  <div>
+  {loading
+  ?  <h1>Loading page...</h1>:
+  <div>
   <h1>
     You have deleted your note! Here is what you deleted -
   </h1>
   <h3>Title: {deletedNote.title}</h3>
   <p>{deletedNote.body}</p>
   This page will re-render in 10 seconds.
+  </div>
+  }
 </div>
+  )
+}
 
- const mapStateToProps = (state) => {
+ const mapStateToProps = (state, ownProps) => {
    const deletedNote = state.notePad.deletedNote
-   return {deletedNote}
+   const loading = state.notePad.loading 
+
+   return {deletedNote, loading}
  }
+
  export default connect(mapStateToProps)(DeletedNote)
-
-
-//import React from 'react';
-// import DeletedNote from '../../components/DeletedNote';
-// import {connect} from 'react-redux';
-
-// const DeletedNoteContainer = ({deletedNote}) => <DeletedNote deletedNote={deletedNote}/>
-
-// const mapStateToProps = (state) => {
-//   const deletedNote = state.notePad.deletedNote
-//    return {deletedNote}
-//  }
-
-// export default connect(mapStateToProps)(DeletedNoteContainer);
