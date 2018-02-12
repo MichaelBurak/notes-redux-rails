@@ -4,7 +4,6 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import * as actions from '../../store/actions/noteActions.js'
 import {connect} from 'react-redux';
-import {withRouter} from "react-router-dom"
 import {Button} from 'reactstrap'
 
 class EditNoteContainer extends React.Component {
@@ -38,10 +37,10 @@ class EditNoteContainer extends React.Component {
   // data.
 
   submitForm(e) {
-    const history = this.props.history
+    //const history = this.props.history
     const values = this.state;
     const id = this.props.id
-    this.props.actions.updateNote(values, history, id)
+    this.props.actions.updateNote(values, id)
     e.preventDefault();
   }
 
@@ -91,4 +90,4 @@ function mapDispatchToProps(dispatch) {
 
 //Exports with knowledge of withRouter and actions.
 
-export default withRouter(connect(null, mapDispatchToProps)(EditNoteContainer));
+export default connect(null, mapDispatchToProps)(EditNoteContainer);
