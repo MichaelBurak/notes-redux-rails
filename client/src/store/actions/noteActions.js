@@ -1,6 +1,9 @@
 import fetch from 'isomorphic-fetch';
 import history from '../../history'
 
+//Handles initial errors based off of response attribute of json, calls a 
+//function to push to the error page if errors exist.. 
+
 function handleErrors(response) {
   if (!response.ok) {
     errorNotify();
@@ -8,17 +11,15 @@ function handleErrors(response) {
   return response
 }
 
-//Attempting to throw errors into Redux Store. Never reaches async thunk action, 
-//only outside of it. Return to later. Allow for global access to history? Might 
-//solve a lot of problems.
+//Pushes to error page.
+
 export function errorNotify() {
     history.push("/error/")
-    console.log("pushed")
   }
-//}
 
 // Through dispatch, tells store that it is fetching notes from API. Fetches
 // notes. Dispatches notes to update store.
+
 export function fetchNotes() {
   return function (dispatch) {
     dispatch({type: 'LOADING_NOTES'})
@@ -33,7 +34,8 @@ export function fetchNotes() {
 }
 
 // Takes in form values and history prop, posts new values of Note to API. Pushes
-// to root directory and dispatches collection of index data.
+// to root directory after creation.
+
 export function createNote(values) {
   const request = {
     method: 'POST',
@@ -55,9 +57,10 @@ export function createNote(values) {
   }
 }
 
-// Takes in id of specific note and history prop. Pushes to page displaying info
+// Takes in id of specific note as argument. Pushes to page displaying info
 // on the deleted note. Deletes note through fetch request. After 10 seconds,
-// dispatches function to push to root and render updated index.
+// pushes to root index page.
+
 export function deleteNote(id) {
   const request = {
     method: 'delete',
@@ -84,7 +87,8 @@ export function deleteNote(id) {
 
 // Takes in same args as createNote, and id of Note being updated. Throws API
 // patch request to appropriate route. Pushes to page with info on the edited
-// info. Gets info on note.
+// info, then after 10 seconds returns to root index.
+
 export function updateNote(values, id) {
   const request = {
     method: 'PATCH',

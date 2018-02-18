@@ -1,3 +1,6 @@
+//Functional component. Consists of a reactstrap button that on click 
+//fires destroy, and thus the action to delete a Note from the store and API.
+
 import React from 'react'
 import {Button} from 'reactstrap'
 

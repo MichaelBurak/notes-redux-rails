@@ -1,10 +1,7 @@
-// Presentational component: Displays a single deleted note and then through
-// actions returns to root.
+// Presentational component: Displays a single deleted note
 
-import React from 'react'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux'
-import * as actions from '../store/actions/noteActions.js'
+import React from 'react';
+import {connect} from 'react-redux'
 
 
 const DeletedNote = ({deletedNote, loading}) => {

@@ -1,3 +1,5 @@
+//Presentational component = renders title and body of passed in Note. 
+
 import React from 'react'
 
 const Note = ({note}) => {

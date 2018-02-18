@@ -1,3 +1,5 @@
+//Presentational component displayed when errors occur in API calls.
+
 import React from 'react'
 import {Alert} from 'reactstrap'
 

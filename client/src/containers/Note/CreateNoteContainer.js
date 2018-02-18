@@ -25,12 +25,10 @@ class CreateNoteContainer extends React.Component {
     this.setState({[name]: value})
   }
 
-  // Pulls in history from router as prop, passes state set by both onChange
-  // functions and history into action responsible for creating new notes,
+  // Passes state set by handleChangeinto action responsible for creating new notes,
   // prevents default action of form.
 
   submitForm(e) {
-    //const history = this.props.history
     const values = this.state;
     this.props.actions.createNote(values);
     e.preventDefault();

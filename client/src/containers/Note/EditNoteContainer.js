@@ -32,12 +32,11 @@ class EditNoteContainer extends React.Component {
     this.setState({[name]: value})
   }
 
-  // Passes in history through withRouter, the state, and the id of the note,
+  // Passes in the state, and the id of the note,
   // instead of submitting form regularly, calls action to update note with that
   // data.
 
   submitForm(e) {
-    //const history = this.props.history
     const values = this.state;
     const id = this.props.id
     this.props.actions.updateNote(values, id)
@@ -88,6 +87,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-//Exports with knowledge of withRouter and actions.
+//Exports with knowledge of actions.
 
 export default connect(null, mapDispatchToProps)(EditNoteContainer);

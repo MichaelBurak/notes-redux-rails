@@ -1,5 +1,5 @@
 // Presentational component: Shows an updated note before rerendering through
-// thunk action.
+//history push.
 
 import React from 'react'
 import {connect} from 'react-redux';

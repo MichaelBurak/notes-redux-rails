@@ -1,3 +1,6 @@
+//Container for Showing and working with a singular note. Displays after loading
+//the note, a delete button, and the container for editing notes.
+
 import React from 'react';
 import Note from '../../components/Note';
 import DeleteNote from '../../components/DeleteNote';

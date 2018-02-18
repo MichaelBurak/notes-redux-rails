@@ -9,9 +9,10 @@ const initialState = {
 
 // Passes initial state and ability to have actions into reducer, switch case of
 // types includes a case for when notes are loading, returning non-mutated state
-// and setting loading to true, and case for fetching notes from the API to keep
+// and setting loading to true, case for fetching notes from the API to keep
 // store current, resetting loading to false and giving the action payload as
-// notes. Currently working on adding single created notes to notes after fetch.
+// notes, creating a new note into the store, updating the notes, deleting a note,
+// clearing the state of the deleted note.
 
 export default function notesReducer(state = initialState, action) {
   switch (action.type) {
@@ -57,11 +58,13 @@ export default function notesReducer(state = initialState, action) {
         ...state,
         deletedNote: {}
       }
-    case 'ERROR_NOTIFICATION':
-      return {
-        ...state,
-        errorPresent: true
-      }
+    //May remove this as conditional rendering within router on all routes is 
+    //difficult/problematic.   
+    // case 'ERROR_NOTIFICATION':
+    //   return {
+    //     ...state,
+    //     errorPresent: true
+    //   }
     default:
       return state;
   }
