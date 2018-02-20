@@ -6,15 +6,17 @@ import history from '../../history'
 
 function handleErrors(response) {
   if (!response.ok) {
-    errorNotify();
+    const error = response.statusText
+    errorNotify(error);
   }
   return response
 }
 
 //Pushes to error page.
 
-export function errorNotify() {
+export function errorNotify(error) {
     history.push("/error/")
+    alert(error)
   }
 
 // Through dispatch, tells store that it is fetching notes from API. Fetches
@@ -29,7 +31,7 @@ export function fetchNotes() {
       .then(responseJson => {
         dispatch({type: 'FETCH_NOTES', payload: responseJson})
       })
-      .catch(error => errorNotify())
+      .catch(error => errorNotify(error))
   }
 }
 
@@ -52,7 +54,7 @@ export function createNote(values) {
       .then(responseJson => {
         dispatch({type: 'CREATE_NOTE', payload: responseJson})
       })
-      .catch(error => errorNotify())
+      .catch(error => errorNotify(error))
       .then(history.push("/"))
   }
 }
@@ -77,7 +79,7 @@ export function deleteNote(id) {
     .then(responseJson => {
       dispatch({type: 'DELETE_NOTE', payload: responseJson})
     })
-    .catch(error => errorNotify())
+    .catch(error => errorNotify(error))
     setTimeout(() => {
       history.push("/");
       dispatch({type: 'CLEAR_DELETED_NOTE'})
@@ -105,7 +107,7 @@ export function updateNote(values, id) {
       .then(responseJson => {
         dispatch({type: 'UPDATE_NOTE', payload: responseJson})
       })
-      .catch(error => errorNotify())
+      .catch(error => errorNotify(error))
       .then(history.push(`/notes/${id}/edited`))
     setTimeout(() => {
       history.push("/");
