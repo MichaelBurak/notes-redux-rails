@@ -23,10 +23,6 @@ class NoteShowContainer extends React.Component {
       <DeleteNote 
         note={this.props.note}
         actions={this.props.actions}/>
-      <EditNoteContainer
-          id={this.props.note.id}
-          title={this.props.note.title}
-          body={this.props.note.body}/>
         </div>
       }
       </div>

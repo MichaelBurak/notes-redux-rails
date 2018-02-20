@@ -22,7 +22,7 @@ class EditNoteContainer extends React.Component {
   // received from NotesIndex, to set state to proper note being edited's data.
 
   componentDidMount() {
-    this.setState({id: this.props.id, title: this.props.title, body: this.props.body})
+    this.setState({id: this.props.note.id, title: this.props.note.title, body: this.props.note.body})
   }
 
   //When changing form, sets state to reflect change on form.
@@ -38,7 +38,7 @@ class EditNoteContainer extends React.Component {
 
   submitForm(e) {
     const values = this.state;
-    const id = this.props.id
+    const id = values.id
     this.props.actions.updateNote(values, id)
     e.preventDefault();
   }
@@ -79,6 +79,17 @@ class EditNoteContainer extends React.Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  const note = state.notePad.notes.find(note => note.id == ownProps.match.params.id)
+  const loading = state.notePad.loading
+
+  if (note) {
+    return { note, loading }
+  } else {
+    return { note: {} }
+  }
+}
+
 //Allows for access to actions.
 
 function mapDispatchToProps(dispatch) {
@@ -89,4 +100,4 @@ function mapDispatchToProps(dispatch) {
 
 //Exports with knowledge of actions.
 
-export default connect(null, mapDispatchToProps)(EditNoteContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EditNoteContainer);
