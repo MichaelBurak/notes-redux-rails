@@ -4,7 +4,6 @@ const initialState = {
   notes: [],
   loading: false,
   deletedNote: {},
-  errorPresent: false
 }
 
 // Passes initial state and ability to have actions into reducer, switch case of
@@ -26,7 +25,6 @@ export default function notesReducer(state = initialState, action) {
         ...state,
         notes: action.payload,
         loading: false,
-        deletedNote: {}
       }
     case 'CREATE_NOTE':
       return {
@@ -58,13 +56,6 @@ export default function notesReducer(state = initialState, action) {
         ...state,
         deletedNote: {}
       }
-    //May remove this as conditional rendering within router on all routes is 
-    //difficult/problematic.   
-    // case 'ERROR_NOTIFICATION':
-    //   return {
-    //     ...state,
-    //     errorPresent: true
-    //   }
     default:
       return state;
   }
