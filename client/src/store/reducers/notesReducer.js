@@ -3,7 +3,7 @@
 const initialState = {
   notes: [],
   loading: false,
-  deletedNote: {},
+  deletedNote: {}
 }
 
 // Passes initial state and ability to have actions into reducer, switch case of
