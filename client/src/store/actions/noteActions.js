@@ -53,9 +53,12 @@ export function createNote(values) {
       .then(res => res.json())
       .then(responseJson => {
         dispatch({type: 'CREATE_NOTE', payload: responseJson})
+        history.push(`/notes/${responseJson.id}/created`)
+        setTimeout(() => {
+          history.push("/");
+      }, 10000)
       })
       .catch(error => errorNotify(error))
-      .then(history.push("/"))
   }
 }
 
