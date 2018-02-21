@@ -6,7 +6,7 @@ import * as actions from '../../store/actions/noteActions.js'
 import {connect} from 'react-redux';
 import {Button} from 'reactstrap'
 
-class EditNoteContainer extends React.Component {
+class UpdateNoteContainer extends React.Component {
   //Sets state to include props and all data in state as empty strings.
 
   constructor(props) {
@@ -100,4 +100,4 @@ function mapDispatchToProps(dispatch) {
 
 //Exports with knowledge of actions.
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditNoteContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateNoteContainer);
