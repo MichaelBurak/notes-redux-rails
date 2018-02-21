@@ -4,7 +4,6 @@
 import React from 'react';
 import Note from '../../components/Note';
 import DeleteNote from '../../components/DeleteNote';
-import EditNoteContainer from './EditNoteContainer';
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/noteActions.js'
 import {bindActionCreators} from 'redux'
