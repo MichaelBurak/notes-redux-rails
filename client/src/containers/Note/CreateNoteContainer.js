@@ -14,7 +14,8 @@ class CreateNoteContainer extends React.Component {
     super(props);
     this.state = {
       title: '',
-      body: ''
+      body: '',
+      category: ''
     };
   }
 
@@ -63,6 +64,14 @@ class CreateNoteContainer extends React.Component {
               value={this.state.body}
               onChange={this.handleChange}
               required/>
+              Note Category:<br/>
+            <input
+              type="text"
+              name="category"
+              value={this.state.category}
+              onChange={this.handleChange}
+              />
+            <br/>
             <button>Submit
             </button>
           </form>

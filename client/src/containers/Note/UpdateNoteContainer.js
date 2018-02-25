@@ -14,7 +14,8 @@ class UpdateNoteContainer extends React.Component {
 
     this.state = {
       title: '',
-      body: ''
+      body: '',
+      category: ''
     }
   }
 
@@ -22,7 +23,7 @@ class UpdateNoteContainer extends React.Component {
   // received from NotesIndex, to set state to proper note being edited's data.
 
   componentDidMount() {
-    this.setState({id: this.props.note.id, title: this.props.note.title, body: this.props.note.body})
+    this.setState({id: this.props.note.id, title: this.props.note.title, body: this.props.note.body, category: this.props.note.category})
   }
 
   //When changing form, sets state to reflect change on form.
@@ -72,6 +73,14 @@ class UpdateNoteContainer extends React.Component {
             onChange=
             {(e) => {this.handleChange(e)}}
             required/>
+            <h3>Edit Note Category:</h3>
+          <input
+            type="text"
+            name="category"
+            value={this.state.category}
+            onChange={this.handleChange}
+            />
+          <br/>
           <Button>Submit</Button>
         </form>
       </div>

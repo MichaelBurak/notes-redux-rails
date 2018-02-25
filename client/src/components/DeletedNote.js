@@ -16,6 +16,7 @@ const DeletedNote = ({deletedNote, loading}) => {
   </h1>
   <h3>Title: {deletedNote.title}</h3>
   <p>{deletedNote.body}</p>
+  <p>Category: {deletedNote.category}</p>
   This page will re-render in 10 seconds.
   </div>
   }

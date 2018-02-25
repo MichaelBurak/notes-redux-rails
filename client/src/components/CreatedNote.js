@@ -16,6 +16,7 @@ return(
   </h1>
   <h3>Title: {note.title}</h3>
   <p>{note.body}</p>
+  <p>Category: {note.category}</p>
   This page will re-render in 10 seconds.
   </div>
   }

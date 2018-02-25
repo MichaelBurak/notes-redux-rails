@@ -15,6 +15,7 @@ const Notes = (props) => {
             </h2>
           </li>
           {note.body}
+          Category: {note.category}
         </ul>
       </div>
     )
