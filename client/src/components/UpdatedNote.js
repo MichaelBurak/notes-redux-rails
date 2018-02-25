@@ -3,6 +3,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux';
+import Timer from '../containers/Note/Timer'
 
 const UpdatedNote = ({note, loading}) => {
 
@@ -16,7 +17,7 @@ return(
   </h1>
   <h3>Title: {note.title}</h3>
   <p>{note.body}</p>
-  This page will re-render in 10 seconds.
+  <Timer/>
   </div>
   }
 </div>

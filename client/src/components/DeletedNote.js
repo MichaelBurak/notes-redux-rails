@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {connect} from 'react-redux'
-
+import Timer from '../containers/Note/Timer'
 
 const DeletedNote = ({deletedNote, loading}) => {
 
@@ -16,7 +16,7 @@ const DeletedNote = ({deletedNote, loading}) => {
   </h1>
   <h3>Title: {deletedNote.title}</h3>
   <p>{deletedNote.body}</p>
-  This page will re-render in 10 seconds.
+  <Timer/>
   </div>
   }
 </div>
