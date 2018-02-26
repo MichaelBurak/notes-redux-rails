@@ -111,10 +111,30 @@ export function updateNote(values, id) {
         dispatch({type: 'UPDATE_NOTE', payload: responseJson})
       })
       .catch(error => errorNotify(error))
-      .then(history.push(`/notes/${id}/edited`))
+      .then(history.push(`/notes/${id}/updated`))
     setTimeout(() => {
       history.push("/");
     }, 10000)
   }
-
 }
+
+  export function like(id, isLiked){
+    debugger 
+    const request = {
+    method: 'PATCH',
+    body: JSON.stringify({liked: isLiked}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+    debugger 
+    return function(dispatch){
+          fetch(`/notes/${id}`, request)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(responseJson => {
+        dispatch({type: 'UPDATE_NOTE', payload: responseJson})
+      })
+      .catch(error => errorNotify(error))
+    }
+  }

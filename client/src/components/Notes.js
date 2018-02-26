@@ -3,6 +3,7 @@
 
 import React from 'react'
 import {Link} from 'react-router-dom';
+import Like from '../containers/Note/Like'
 
 const Notes = (props) => {
   return (props.notes.map((note, i) => {
@@ -15,6 +16,9 @@ const Notes = (props) => {
             </h2>
           </li>
           {note.body}
+          <br/>
+          <Like 
+          note = {note}/>
         </ul>
       </div>
     )
