@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Note.create(title: 'Notes!', body: 'A note app! Try it out!' )
-Note.create(title: "CRUDdy app!", body: 'Enjoy that you can delete your mistakes and change your mind too!' )
+Note.create(title: 'Notes!', body: 'A note app! Try it out!', liked: false)
+Note.create(title: "CRUDdy app!", body: 'Enjoy that you can delete your mistakes and change your mind too!', liked: true )
 Note.create(title: "Redux!", body: 'Is awesome!')
 Note.create(title: "Thin", body: "It's pretty simple!")
 Note.create(title: "Stylin", body: "But it's got some styling!")

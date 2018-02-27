@@ -15,10 +15,9 @@ ActiveRecord::Schema.define(version: 20180226150529) do
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "category"
-    t.boolean  "liked"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "liked",      default: false
   end
 
 end

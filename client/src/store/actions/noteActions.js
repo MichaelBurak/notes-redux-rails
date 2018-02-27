@@ -118,11 +118,11 @@ export function updateNote(values, id) {
   }
 }
 
-  export function like(id, isLiked){
+  export function like(id, likeStatus){
     debugger 
     const request = {
     method: 'PATCH',
-    body: JSON.stringify({liked: isLiked}),
+    body: JSON.stringify({liked: likeStatus}),
     headers: {
       'Content-Type': 'application/json'
     }

@@ -6,42 +6,45 @@ import {connect} from 'react-redux';
 
 class Like extends React.Component {
     
-    state = {
-        dropdownOpen: false,
-        isLiked: ''
+    constructor(props) {
+    super(props)
+
+    this.state = {
+      dropdownOpen: false
     }
+    //this.toggle.bind(this)
+  }
+    
+
 
     componentDidMount(){
         this.setState({isLiked: this.props.note.liked})
-        debugger 
+        //debugger 
     }
 
-    toggle = () => {
-        this.setState({dropdownOpen: !this.state.dropdownOpen})
-        console.log(this.state.dropdownOpen)
-        //this does toggle dropdownOpen, but registers 'false' when open and 
-        //'true' when closed, the opposite of expected behavior.
+    toggle = (e) => {
+        e.preventDefault()
+        //debugger 
+        let open = this.state.dropdownOpen
+        //debugger 
+        this.setState({dropdownOpen: !open})
     };
 
     likeHandler = (e) => {
         e.preventDefault() 
-        debugger
+        //debugger
         const id = this.props.note.id 
-        this.setState((prevState, props) =>( {
-            isLiked: !prevState.isLiked
-        }))
-        //this does not invert the boolean of isLiked.
-        //running !this.state.isLiked 
-        const isLiked = this.state.isLiked
-        debugger
-        this.props.actions.like(id, isLiked)
+        //https://vasanthk.gitbooks.io/react-bits/patterns/19.async-nature-of-setState.html
+        //debugger
+        this.props.actions.like(id)
     }
 
     render(){
+        console.log(this.state.dropdownOpen)
         return(
-            <Dropdown isOpen={this.state.dropdownOpen } toggle={this.toggle} >
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={(e) => {this.toggle(e)}} >
             <DropdownToggle caret>
-            Do you want to like this? Note ID {this.props.note.id} is {this.state.isliked ? "Liked" : "Not Liked"}
+            Do you want to like this? Note ID {this.props.note.id} is {this.props.note.liked ? "Liked" : "Not Liked"}
             </DropdownToggle>
             <DropdownMenu>
             <DropdownItem header> <Button value="isLiked" onClick={(e) => {this.likeHandler(e)}}>Like/Unlike</Button> </DropdownItem>
