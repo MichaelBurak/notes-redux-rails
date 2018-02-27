@@ -75,6 +75,9 @@ export default function notesReducer(state = initialState, action) {
       case 'RESTORE_NOTE':
       // const restoredId = action.payload.id
       // const formerPosition = restoredId-1
+      // const notebefore = formerPosition-1
+      // const maybe the index of id that is the next greater than restoredId using find,  then indexOF(that id)-1 would be the appropriate index
+      // const oldArray = [...state.notes]
       //debugger 
       return {
         ...state,
