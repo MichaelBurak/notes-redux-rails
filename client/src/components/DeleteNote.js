@@ -9,12 +9,23 @@ const DeleteNote = ({note, actions}) => {
 const destroy = (e) => {
     e.preventDefault();
     const id = note.id
+    //debugger 
     actions.deleteNote(id)
   }
 
+const hardDestroy = (e) => {
+  e.preventDefault()
+  const id = note.id 
+  actions.hardDeleteNote(id)
+}
+
 return(
+  <div>
 < Button type = 'button' onClick = {(e) => destroy(e)
 } > Delete Note </Button>
+< Button type = 'button' onClick = {(e) => hardDestroy(e)
+} > Delete Note Forever</Button>
+  </div>
 )
 }
 

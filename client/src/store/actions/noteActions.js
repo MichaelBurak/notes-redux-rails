@@ -35,6 +35,19 @@ export function fetchNotes() {
   }
 }
 
+export function fetchTrash() {
+  return function (dispatch) {
+    dispatch({type: 'LOADING_NOTES'})
+    return fetch('/notes/trash')
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(responseJson => {
+        dispatch({type: 'FETCH_TRASH', payload: responseJson})
+      })
+      .catch(error => errorNotify(error))
+  }
+}
+
 // Takes in form values and history prop, posts new values of Note to API. Pushes
 // to root directory after creation.
 
@@ -68,11 +81,13 @@ export function createNote(values) {
 
 export function deleteNote(id) {
   const request = {
-    method: 'delete',
+    method: 'PATCH',
+    body: JSON.stringify({deleted: true}),
     headers: {
       'Content-Type': 'application/json'
     }
   }
+  //debugger 
   history.push(`/notes/${id}/deleted`)
   return function (dispatch) {
     dispatch({type: 'LOADING_NOTES'})
@@ -84,8 +99,7 @@ export function deleteNote(id) {
     })
     .catch(error => errorNotify(error))
     setTimeout(() => {
-      history.push("/");
-      dispatch({type: 'CLEAR_DELETED_NOTE'})
+      history.push(`/notes/trash/`);
     }, 10000)
 }
 }
@@ -116,5 +130,98 @@ export function updateNote(values, id) {
       history.push("/");
     }, 10000)
   }
-
 }
+
+export function hardDeleteNote(id) {
+  const request = {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  history.push(`/notes/${id}/deleted`)
+  return function (dispatch) {
+    dispatch({type: 'LOADING_NOTES'})
+    fetch(`/notes/${id}`, request)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(responseJson => {
+        dispatch({type: 'HARD_DELETE_NOTE', payload: responseJson})
+      })
+      .catch(error => errorNotify(error))
+      setTimeout(() => {
+        history.push("/");
+        dispatch({type: 'CLEAR_DELETED_NOTE'})
+      }, 10000)
+  }
+}
+
+export function hardWipeNote(id) {
+  const request = {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  history.push(`/notes/${id}/deleted`)
+  return function (dispatch) {
+    dispatch({type: 'LOADING_NOTES'})
+    fetch(`/notes/${id}`, request)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(responseJson => {
+        dispatch({type: 'HARD_WIPE_NOTE', payload: responseJson})
+      })
+      .catch(error => errorNotify(error))
+      setTimeout(() => {
+        history.push("/");
+        dispatch({type: 'CLEAR_DELETED_NOTE'})
+      }, 10000)
+  }
+}
+
+export function clearTrash() {
+  const request = {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  history.push("/")
+  return function (dispatch) {
+    dispatch({type: 'CLEAR_TRASH'})
+    fetch(`/notes/trash`, request)
+      .then(handleErrors)
+      .then(res => res.json())
+      // .then(responseJson => {
+      //   dispatch({type: 'HARD_WIPE_NOTE', payload: responseJson})
+      // })
+      // .catch(error => errorNotify(error))
+      // setTimeout(() => {
+      //   history.push("/");
+      //   dispatch({type: 'CLEAR_DELETED_NOTE'})
+      // }, 10000)
+  }
+}
+
+export function restoreNote(id) {
+  const request = {
+    method: 'PATCH',
+    body: JSON.stringify({deleted: false}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  history.push("/")
+  //debugger 
+  return function (dispatch) {
+    dispatch({type: 'LOADING_NOTES'})
+    fetch(`/notes/${id}`, request)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(responseJson => {
+        dispatch({type: 'RESTORE_NOTE', payload: responseJson})
+      })
+  }
+}
+

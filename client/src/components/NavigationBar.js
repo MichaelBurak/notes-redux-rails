@@ -17,7 +17,13 @@ const NavigationBar = () => <Navbar>
         <Link to={"/notes/new"}>Create a new note!</Link>
       </NavLink>
     </NavItem>
+    <NavItem>
+      <NavLink>
+        <Link to={"/notes/trash"}>Welcome to your new home, the TRASH!</Link>
+      </NavLink>
+    </NavItem>
   </Nav>
 </Navbar>;
 
 export default NavigationBar
+
