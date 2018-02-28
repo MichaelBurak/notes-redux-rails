@@ -25,12 +25,12 @@ class Timer extends React.Component {
 
    tick = () => {
        this.setState({
-           secondsLeft: this.state.secondsLeft-=1
+           secondsLeft: this.state.secondsLeft-1
        })
     }
 
     //Stops the countdown from continuing to run when component unmounts.
-    
+
     componentWillUnmount(){
         clearInterval(this.state.timer)
     }
