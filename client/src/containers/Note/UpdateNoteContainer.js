@@ -14,7 +14,8 @@ class UpdateNoteContainer extends React.Component {
 
     this.state = {
       title: '',
-      body: ''
+      body: '',
+      counter: 0,
     }
   }
 
@@ -41,6 +42,11 @@ class UpdateNoteContainer extends React.Component {
     const id = values.id
     this.props.actions.updateNote(values, id)
     e.preventDefault();
+  }
+
+  inc(e) {
+    e.preventDefault()
+    this.setState({counter: this.state.counter +1 })
   }
 
   // Form for editing note initially populated by note's contents, later changed by
@@ -74,6 +80,8 @@ class UpdateNoteContainer extends React.Component {
             required/>
           <Button>Submit</Button>
         </form>
+        <Button onClick={e=>{this.inc(e)}}/>
+        {this.state.counter}
       </div>
     )
   }
