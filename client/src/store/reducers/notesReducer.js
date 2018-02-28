@@ -1,4 +1,6 @@
-//Sets initial state without which Redux would error.
+//Sets initial state without which Redux would error containing an array of the 
+//analogous model data from the API, a loading boolean for if requests are in 
+//progress, and an empty object for a currently introspected upon deletedNote.
 
 const initialState = {
   notes: [],

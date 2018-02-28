@@ -1,4 +1,5 @@
-//Presentational component = renders title and body of passed in Note. 
+//Presentational component = renders title and body of passed in Note with link to 
+//edit route for introspected upon note. 
 
 import React from 'react'
 import {Link} from "react-router-dom"

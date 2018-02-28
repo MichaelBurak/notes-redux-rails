@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import history from '../../history'
 
 //Handles initial errors based off of response attribute of json, calls a 
-//function to push to the error page if errors exist.. 
+//function to push to the error page if errors exist.
 
 function handleErrors(response) {
   if (!response.ok) {
@@ -12,7 +12,7 @@ function handleErrors(response) {
   return response
 }
 
-//Pushes to error page.
+//Pushes to error page and displays info on the error.
 
 export function errorNotify(error) {
     history.push("/error/")
@@ -35,8 +35,8 @@ export function fetchNotes() {
   }
 }
 
-// Takes in form values and history prop, posts new values of Note to API. Pushes
-// to root directory after creation.
+// Takes in form values, posts new values of Note to API. Pushes
+// to notification page of creation after creation and then in 10 seconds root.
 
 export function createNote(values) {
   const request = {
@@ -46,7 +46,7 @@ export function createNote(values) {
       'Content-Type': 'application/json'
     }
   }
-  return function (dispatch) {
+  return function (dispatch) { 
     dispatch({type: 'LOADING_NOTES'})
     return fetch(`/notes/`, request)
       .then(handleErrors)
@@ -90,7 +90,7 @@ export function deleteNote(id) {
 }
 }
 
-// Takes in same args as createNote, and id of Note being updated. Throws API
+// Takes in same args as createNote, for Note being updated. Throws API
 // patch request to appropriate route. Pushes to page with info on the edited
 // info, then after 10 seconds returns to root index.
 

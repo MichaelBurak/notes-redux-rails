@@ -1,5 +1,4 @@
-// Presentational component: Shows an updated note before rerendering through
-//history push.
+// Presentational component: Shows an updated note before rerendering
 
 import React from 'react'
 import {connect} from 'react-redux';

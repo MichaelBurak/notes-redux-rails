@@ -9,6 +9,8 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './App'
 import 'bootstrap/dist/css/bootstrap.css'
 
+//Allows for access to those wonderful dev tools.
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 //Creates store and allows for use of thunk middleware for async actions.

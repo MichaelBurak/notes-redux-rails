@@ -11,6 +11,11 @@ import NavigationBar from './components/NavigationBar';
 import ErrorAlert from './components/ErrorAlert';
 import history from './history'
 
+  //Main app page, including access to and router 
+  //router with access to history. Navigation bar to appear
+  //on all routes nested under div, then a switch depending on URL route to display 
+  //appropriate component, exact used to avoid trip ups with `notes/:id`
+
 const App = ({store}) => (
     <Router history={history}>
       <div>

@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Notes from '../../components/Notes'
-import * as actions from '../../store/actions/noteActions';
+import * as actions from '../../store/actions/noteActions'
 
 class NotesIndexContainer extends React.Component {
 
@@ -31,7 +31,7 @@ class NotesIndexContainer extends React.Component {
   }
 }
 
-//Gives access to notes in store.
+//Gives access to notes in store and loading from store for conditional rendering.
 
 function mapStateToProps(state) {
   return {notes: state.notePad.notes, loading: state.notePad.loading}

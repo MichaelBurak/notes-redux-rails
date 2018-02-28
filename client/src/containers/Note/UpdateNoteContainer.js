@@ -49,6 +49,9 @@ class UpdateNoteContainer extends React.Component {
   render() {
     return (
       <div>
+        {this.props.loading
+          ? <h1>Loading page...</h1>
+          :
         <form onSubmit= {(e) => this.submitForm(e)}>
           <h2>
             Edit {this.state.title}!
@@ -74,10 +77,14 @@ class UpdateNoteContainer extends React.Component {
             required/>
           <Button>Submit</Button>
         </form>
+        }
       </div>
     )
   }
 }
+
+  //Gives access to correct note in props based on url via ownProps.match and 
+  //loading from store for conditional rendering.
 
 const mapStateToProps = (state, ownProps) => {
   const note = state.notePad.notes.find(note => note.id == ownProps.match.params.id)

@@ -72,10 +72,6 @@ class CreateNoteContainer extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {notes: state.notePad.notes, loading: state.notePad.loading}
-}
-
 //Allows actions to be accessed as props at this.props.actions.[action]
 
 function mapDispatchToProps(dispatch) {
@@ -86,4 +82,4 @@ function mapDispatchToProps(dispatch) {
 
 //Connects component to redux store.
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateNoteContainer)
+export default connect(null, mapDispatchToProps)(CreateNoteContainer)

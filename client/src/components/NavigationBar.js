@@ -5,7 +5,8 @@ import {Navbar, NavItem, Nav, NavLink} from 'reactstrap'
 import React from 'react'
 import {Link} from "react-router-dom"
 
-const NavigationBar = () => <Navbar>
+const NavigationBar = () => 
+<Navbar>
   <Nav>
     <NavItem>
       <NavLink>
