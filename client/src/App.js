@@ -4,6 +4,7 @@ import NotesIndexContainer from './containers/Note/NotesIndexContainer';
 import NoteShowContainer from './containers/Note/NoteShowContainer';
 import CreateNoteContainer from './containers/Note/CreateNoteContainer';
 import UpdateNoteContainer from './containers/Note/UpdateNoteContainer';
+import TrashContainer from './containers/Note/TrashContainer'
 import UpdatedNote from './components/UpdatedNote';
 import CreatedNote from './components/CreatedNote';
 import DeletedNote from './components/DeletedNote';
@@ -23,6 +24,7 @@ const App = ({store}) => (
         <Switch>
           <Route exact path={`/`} component={NotesIndexContainer}/>
           <Route exact path={`/notes/new`} component={CreateNoteContainer}/>
+          <Route exact path={`/notes/trash`} component={TrashContainer}/>
           <Route exact path={`/notes/:id/edited`} component={UpdatedNote}/>
           <Route exact path={`/notes/:id/deleted`} component={DeletedNote}/>
           <Route exact path={`/notes/:id/created`} component={CreatedNote}/>

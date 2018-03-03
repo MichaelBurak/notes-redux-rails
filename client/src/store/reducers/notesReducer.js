@@ -5,7 +5,8 @@
 const initialState = {
   notes: [],
   loading: false,
-  deletedNote: {}
+  deletedNote: {},
+  trash: []
 }
 
 // Passes initial state and ability to have actions into reducer, switch case of
@@ -28,6 +29,12 @@ export default function notesReducer(state = initialState, action) {
         notes: action.payload,
         loading: false,
       }
+    case 'FETCH_TRASH':
+      return{
+        ...state,
+        trash: action.payload,
+        loading: false
+      }
     case 'CREATE_NOTE':
       return {
         ...state,
@@ -46,12 +53,67 @@ export default function notesReducer(state = initialState, action) {
           loading: false,
           notes: updatedNoteArray
         }
+    // case 'DELETE_NOTE':
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     deletedNote: action.payload,
+    //     trashCan: [...state.trashCan, action.payload],
+    //     notes: state.notes.filter(note => action.payload.id !== note.id)
+    //   }
     case 'DELETE_NOTE':
+      // const noteAttributes = action.payload
+      // debugger 
+      // const newNoteArray = state.notes.map(note => note.id === noteAttributes.id
+      //     ? noteAttributes : note)
+          //debugger 
+          return {
+          ...state,
+          loading: false,
+          notes: state.notes.filter(note => action.payload.id !== note.id),
+          deletedNote: action.payload,
+          trash: [...state.trash, action.payload]
+        }
+      case 'RESTORE_NOTE':
+      //Gets Id of the note to be restored
+      const restoredId = action.payload.id
+      //Finds the next highest id note
+      const nextGreatestIdNote = state.notes.find(function (note){
+        return note.id > restoredId
+      })
+      //Gets the index of that note 
+      const nextGreatestIdIndex = state.notes.indexOf(nextGreatestIdNote)
+      //Tests to see if there IS A note of a higher id, if not, returns last index
+      const nextGreatestOrLast = nextGreatestIdIndex== -1 ? state.notes.length : nextGreatestIdIndex
+      //Duplicates state.notes
+      let updatedArray = [...state.notes]
+      //splices array to put back into analogous position
+      updatedArray.splice(nextGreatestOrLast, 0, action.payload)
+      return {
+        ...state,
+        loading: false,
+        notes: updatedArray,
+        trash: state.trash.filter(trashNote => action.payload.id !== trashNote.id)
+      }
+    case 'HARD_DELETE_NOTE':
       return {
         ...state,
         loading: false,
         deletedNote: action.payload,
         notes: state.notes.filter(note => action.payload.id !== note.id)
+      }
+    case 'HARD_WIPE_NOTE':
+      return {
+        ...state,
+        loading: false,
+        deletedNote: action.payload,
+        trash: state.trash.filter(trashNote => action.payload.id !== trashNote.id)
+      }
+    case 'CLEAR_TRASH':
+      return {
+        ...state, 
+        loading: false,
+        trash: []
       }
     case 'CLEAR_DELETED_NOTE':
       return {

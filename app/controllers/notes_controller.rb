@@ -1,8 +1,14 @@
 class NotesController < ApplicationController
+require 'pry'
   def index
-    @notes = Note.all
+    @notes = Note.where(deleted: false)
     render json: @notes
   end
+
+  def trash 
+    @trash = Note.where(deleted: true)
+    render json: @trash 
+  end 
 
   def show
     @note = Note.find(params[:id])
@@ -35,9 +41,16 @@ class NotesController < ApplicationController
     end 
   end
 
+  def destroyTrash 
+    @trash = Note.where(deleted: true)
+    if @trash.delete_all 
+      render json: @trash
+  end
+end
+
 private
   def note_params
-    params.require(:note).permit(:title, :body)
+    params.require(:note).permit(:title, :body, :deleted)
   end
 
 end
