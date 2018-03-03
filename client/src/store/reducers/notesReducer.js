@@ -75,27 +75,18 @@ export default function notesReducer(state = initialState, action) {
       case 'RESTORE_NOTE':
       //Gets Id of the note to be restored
       const restoredId = action.payload.id
-      //debugger 
       //Finds the next highest id note
       const nextGreatestIdNote = state.notes.find(function (note){
         return note.id > restoredId
       })
       //Gets the index of that note 
       const nextGreatestIdIndex = state.notes.indexOf(nextGreatestIdNote)
-      //debugger 
       //Tests to see if there IS A note of a higher id, if not, returns last index
       const nextGreatestOrLast = nextGreatestIdIndex== -1 ? state.notes.length : nextGreatestIdIndex
-      //debugger 
       //Duplicates state.notes
       let updatedArray = [...state.notes]
-      //debugger 
       //splices array to put back into analogous position
       updatedArray.splice(nextGreatestOrLast, 0, action.payload)
-      debugger 
-      // const notebefore = formerPosition-1
-      // const maybe the index of id that is the next greater than restoredId using find,  then indexOF(that id)-1 would be the appropriate index
-      // const oldArray = [...state.notes]
-      //debugger 
       return {
         ...state,
         loading: false,
