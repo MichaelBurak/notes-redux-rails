@@ -35,10 +35,6 @@ export function fetchNotes() {
   }
 }
 
-<<<<<<< HEAD
-// Takes in form values, posts new values of Note to API. Pushes
-// to notification page of creation after creation and then in 10 seconds root.
-=======
 export function fetchTrash() {
   return function (dispatch) {
     dispatch({type: 'LOADING_NOTES'})
@@ -54,7 +50,6 @@ export function fetchTrash() {
 
 // Takes in form values and history prop, posts new values of Note to API. Pushes
 // to root directory after creation.
->>>>>>> b2d9e3cd1f6d9edb136e21ae8e0aeb1f62f3ec1b
 
 export function createNote(values) {
   const request = {
