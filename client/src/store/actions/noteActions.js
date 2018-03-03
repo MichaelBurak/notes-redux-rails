@@ -193,14 +193,6 @@ export function clearTrash() {
     fetch(`/notes/trash`, request)
       .then(handleErrors)
       .then(res => res.json())
-      // .then(responseJson => {
-      //   dispatch({type: 'HARD_WIPE_NOTE', payload: responseJson})
-      // })
-      // .catch(error => errorNotify(error))
-      // setTimeout(() => {
-      //   history.push("/");
-      //   dispatch({type: 'CLEAR_DELETED_NOTE'})
-      // }, 10000)
   }
 }
 
