@@ -9,14 +9,6 @@ import * as actions from '../../store/actions/noteActions'
 
 class TrashContainer extends React.Component {
 
-  //On mount, gets all notes from API into store.
-  
-  componentDidMount() {
-    if (this.props.notes.length === 0) {
-      this.props.actions.fetchTrash()
-    }
-  }
-
   // Renders Notes presentational with data passed down through store to props
   // below.
 

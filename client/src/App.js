@@ -11,13 +11,28 @@ import DeletedNote from './components/DeletedNote';
 import NavigationBar from './components/NavigationBar';
 import ErrorAlert from './components/ErrorAlert';
 import history from './history'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from './store/actions/noteActions'
 
   //Main app page, including access to and router 
   //router with access to history. Navigation bar to appear
   //on all routes nested under div, then a switch depending on URL route to display 
   //appropriate component, exact used to avoid trip ups with `notes/:id`
 
-const App = ({store}) => (
+class App extends React.Component {
+
+  componentDidMount(){
+     if (this.props.notes.length === 0) {
+      this.props.actions.fetchNotes()
+    }
+    if (this.props.trash.length === 0) {
+      this.props.actions.fetchTrash()
+    }
+  }
+
+  render(){
+    return(
     <Router history={history}>
       <div>
         <NavigationBar/>
@@ -35,6 +50,17 @@ const App = ({store}) => (
       </div>
     </Router>
 )
+}
+}
 
+function mapStateToProps(state) {
+  return {notes: state.notePad.notes, trash: state.notePad.trash, loading: state.notePad.loading}
+}
 
-export default App
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

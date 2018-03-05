@@ -9,14 +9,6 @@ import LikeCounter from '../../components/LikeCounter'
 
 class NotesIndexContainer extends React.Component {
 
-  //On mount, gets all notes from API into store.
-  
-  componentDidMount() {
-    if (this.props.notes.length === 0) {
-      this.props.actions.fetchNotes()
-    }
-  }
-
   // Renders Notes presentational with data passed down through store to props
   // below.
 
