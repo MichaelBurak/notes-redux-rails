@@ -3,7 +3,6 @@
 
 import React from 'react'
 import RestoreNote from './RestoreNote'
-import ClearTrash from './ClearTrash'
 
 const TrashNotes = ({notes, actions}) => {
 
