@@ -21,8 +21,6 @@ const TrashNotes = ({notes, actions}) => {
           <RestoreNote
           note={note}
           actions={actions}/>
-          <ClearTrash 
-          actions={actions}/>
         </ul>
       </div>
     )

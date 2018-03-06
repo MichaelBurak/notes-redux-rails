@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TrashNotes from '../../components/TrashNotes'
 import * as actions from '../../store/actions/noteActions'
+import ClearTrash from '../../components/ClearTrash';
 
 class TrashContainer extends React.Component {
 
@@ -16,10 +17,13 @@ class TrashContainer extends React.Component {
       <div>
         {this.props.loading
           ? <h1>Loading page...</h1>
-          : 
+          : <div>
             <TrashNotes 
           notes={this.props.notes}
           actions={this.props.actions}/>
+          <ClearTrash
+          actions={this.props.actions}/>
+            </div>
 }
       </div>
     )
