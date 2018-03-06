@@ -48,9 +48,10 @@ require 'pry'
   end
 end
 
+
 private
   def note_params
-    params.require(:note).permit(:title, :body, :deleted)
+    params.require(:note).permit(:title, :body, :deleted, :liked)
   end
 
 end
