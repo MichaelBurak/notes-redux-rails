@@ -87,7 +87,6 @@ export function deleteNote(id) {
       'Content-Type': 'application/json'
     }
   }
-  //debugger 
   history.push(`/notes/${id}/deleted`)
   return function (dispatch) {
     dispatch({type: 'LOADING_NOTES'})
@@ -205,7 +204,6 @@ export function restoreNote(id) {
     }
   }
   history.push("/")
-  //debugger 
   return function (dispatch) {
     dispatch({type: 'LOADING_NOTES'})
     fetch(`/notes/${id}`, request)
@@ -214,6 +212,25 @@ export function restoreNote(id) {
       .then(responseJson => {
         dispatch({type: 'RESTORE_NOTE', payload: responseJson})
       })
+  }
+}
+
+export function like(id, isLiked) {
+  const request = {
+    method: 'PATCH',
+    body: JSON.stringify({liked: !isLiked}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  return function (dispatch) {
+    fetch(`/notes/${id}`, request)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(responseJson => {
+        dispatch({type: 'UPDATE_NOTE', payload: responseJson})
+      })
+      .catch(error => errorNotify(error))
   }
 }
 
