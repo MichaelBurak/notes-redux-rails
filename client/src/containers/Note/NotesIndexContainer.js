@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Notes from '../../components/Notes'
 import * as actions from '../../store/actions/noteActions'
-import LikeCounter from '../../components/LikeCounter'
 
 class NotesIndexContainer extends React.Component {
 
