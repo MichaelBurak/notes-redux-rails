@@ -12,35 +12,27 @@ class Like extends React.Component {
     this.state = {
       dropdownOpen: false
     }
-    //this.toggle.bind(this)
   }
     
 
 
     componentDidMount(){
         this.setState({isLiked: this.props.note.liked})
-        //debugger 
     }
 
     toggle = (e) => {
         e.preventDefault()
-        //debugger 
         let open = this.state.dropdownOpen
-        //debugger 
         this.setState({dropdownOpen: !open})
     };
 
     likeHandler = (e) => {
         e.preventDefault() 
-        //debugger
         const id = this.props.note.id 
-        //https://vasanthk.gitbooks.io/react-bits/patterns/19.async-nature-of-setState.html
-        //debugger
         this.props.actions.like(id)
     }
 
     render(){
-        console.log(this.state.dropdownOpen)
         return(
             <Dropdown isOpen={this.state.dropdownOpen} toggle={(e) => {this.toggle(e)}} >
             <DropdownToggle caret>
@@ -55,8 +47,8 @@ class Like extends React.Component {
 }
 
     function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
+        return {
+        actions: bindActionCreators(actions, dispatch)
   }
 }
 
