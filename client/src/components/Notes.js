@@ -4,7 +4,7 @@
 
 import React from 'react'
 import {Link} from 'react-router-dom';
-import LikeCounter from './LikeCounter'
+import Like from './Like'
 
 const Notes = (props) => {
   return (props.notes.map((note, i) => {
@@ -17,8 +17,10 @@ const Notes = (props) => {
             </h2>
           </li>
           {note.body}
+          <br/>
+          <Like 
+          note = {note}/>
         </ul>
-        <LikeCounter/>
       </div>
     )
   }))
