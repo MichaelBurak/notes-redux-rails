@@ -4,7 +4,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TrashNotes from '../../components/TrashNotes'
-import DeletionSelector from '../../components/DeletionSelector'
 import * as actions from '../../store/actions/noteActions'
 
 class TrashContainer extends React.Component {

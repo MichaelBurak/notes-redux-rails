@@ -2,7 +2,6 @@
 // passed down from NotesIndexContainer.
 
 import React from 'react'
-import {Button} from 'reactstrap'
 import RestoreNote from './RestoreNote'
 import ClearTrash from './ClearTrash'
 
