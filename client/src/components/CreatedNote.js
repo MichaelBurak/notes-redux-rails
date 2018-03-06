@@ -16,7 +16,7 @@ return(
     You have created your note! Here is the created note -
   </h1>
   <h3>Title: {note.title}</h3>
-  <p>{note.body}</p>
+  <p>{note.content}</p>
   <Timer/>
   </div>
   }

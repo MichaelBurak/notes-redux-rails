@@ -15,7 +15,7 @@ return(
     You have updated your note! Here is the updated note -
   </h1>
   <h3>Title: {note.title}</h3>
-  <p>{note.body}</p>
+  <p>{note.content}</p>
   <Timer/>
   </div>
   }

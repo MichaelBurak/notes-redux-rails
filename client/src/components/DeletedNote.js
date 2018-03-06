@@ -15,7 +15,7 @@ const DeletedNote = ({deletedNote, loading}) => {
     You have deleted your note! Here is what you deleted -
   </h1>
   <h3>Title: {deletedNote.title}</h3>
-  <p>{deletedNote.body}</p>
+  <p>{deletedNote.content}</p>
   <Timer/>
   </div>
   }

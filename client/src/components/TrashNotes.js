@@ -16,7 +16,7 @@ const TrashNotes = ({notes, actions}) => {
               {note.title}
             </h2>
           </li>
-          {note.body}
+          {note.content}
           <br/>
           <RestoreNote
           note={note}

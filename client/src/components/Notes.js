@@ -16,7 +16,7 @@ const Notes = (props) => {
               <Link to={`/notes/${note.id}`}>{note.title}</Link>
             </h2>
           </li>
-          {note.body}
+          {note.content}
           <br/>
           <Like 
           note = {note}/>

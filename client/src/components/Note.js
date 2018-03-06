@@ -1,4 +1,4 @@
-//Presentational component = renders title and body of passed in Note with link to 
+//Presentational component = renders title and content of passed in Note with link to 
 //edit route for introspected upon note. 
 
 import React from 'react'
@@ -9,7 +9,7 @@ const Note = ({note}) => {
     return (
       <div>
         <h3>Current Note Title: {note.title}</h3>
-        <p>{note.body}</p>
+        <p>{note.content}</p>
         <Link to={`/notes/${note.id}/edit`}>Edit {note.title}</Link>
         <br/>
         <br/>

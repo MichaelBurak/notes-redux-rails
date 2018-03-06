@@ -14,7 +14,7 @@ class CreateNoteContainer extends React.Component {
     super(props);
     this.state = {
       title: '',
-      body: ''
+      content: ''
     };
   }
 
@@ -59,8 +59,8 @@ class CreateNoteContainer extends React.Component {
             <textarea
               rows="10"
               cols="25"
-              name="body"
-              value={this.state.body}
+              name="content"
+              value={this.state.content}
               onChange={this.handleChange}
               required/>
             <button>Submit
