@@ -20,7 +20,7 @@ const NavigationBar = () =>
     </NavItem>
     <NavItem>
       <NavLink>
-        <Link to={"/notes/trash"}>Welcome to your new home, the TRASH!</Link>
+        <Link to={"/notes/trash"}>Click for the Trash Can</Link>
       </NavLink>
     </NavItem>
   </Nav>

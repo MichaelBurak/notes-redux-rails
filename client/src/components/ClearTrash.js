@@ -11,7 +11,7 @@ const clear = (e) => {
 return(
   <div>
 < Button type = 'button' onClick = {(e) => clear(e)
-} > CLEANSE THE TRASH </Button>
+} > Clear the entire Trash </Button>
   </div>
 )
 }
