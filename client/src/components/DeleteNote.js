@@ -6,25 +6,20 @@ import {Button} from 'reactstrap'
 
 const DeleteNote = ({note, actions}) => {
 
-const destroy = (e) => {
-    e.preventDefault();
+const destroy = () => {
     const id = note.id
-    //debugger 
     actions.deleteNote(id)
   }
 
-const hardDestroy = (e) => {
-  e.preventDefault()
+const hardDestroy = () => {
   const id = note.id 
   actions.hardDeleteNote(id)
 }
 
 return(
   <div>
-< Button type = 'button' onClick = {(e) => destroy(e)
-} > Delete Note </Button>
-< Button type = 'button' onClick = {(e) => hardDestroy(e)
-} > Delete Note Forever</Button>
+< Button type = 'button' onClick = {destroy} > Delete Note </Button>
+< Button type = 'button' onClick = {hardDestroy} > Delete Note Forever</Button>
   </div>
 )
 }

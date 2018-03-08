@@ -3,24 +3,20 @@ import {Button} from 'reactstrap'
 
 const RestoreNote = ({note, actions}) => {
 
-const restore = (e) => {
-    e.preventDefault();
+const restore = () => {
     const id = note.id
-    //debugger 
     actions.restoreNote(id)
   }
 
-const wipe = (e) => {
-    e.preventDefault()
+const wipe = () => {
     const id = note.id 
     actions.hardWipeNote(id)
 }
 
 return(
   <div>
-< Button type = 'button' onClick = {(e) => restore(e)
-} > Restore Note </Button>
-<Button type='button' onClick={(e) => wipe(e)}>Delete Note Forever</Button>
+< Button type = 'button' onClick = {restore} > Restore Note </Button>
+<Button type='button' onClick={wipe}> Delete Note Forever</Button>
   </div>
 )
 }

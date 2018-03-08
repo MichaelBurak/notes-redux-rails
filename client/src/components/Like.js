@@ -14,20 +14,16 @@ class Like extends React.Component {
     }
   }
     
-
-
     componentDidMount(){
         this.setState({isLiked: this.props.note.liked})
     }
 
-    toggle = (e) => {
-        e.preventDefault()
+    toggle = () => {
         let open = this.state.dropdownOpen
         this.setState({dropdownOpen: !open})
     };
 
-    likeHandler = (e) => {
-        e.preventDefault() 
+    likeHandler = () => {
         const id = this.props.note.id 
         const isLiked = this.props.note.liked
         this.props.actions.like(id,isLiked)
@@ -35,12 +31,12 @@ class Like extends React.Component {
 
     render(){
         return(
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={(e) => {this.toggle(e)}} >
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} >
             <DropdownToggle caret>
             Do you want to like this? Note ID {this.props.note.id} is {this.props.note.liked ? "Liked" : "Not Liked"}
             </DropdownToggle>
             <DropdownMenu>
-            <DropdownItem header> <Button value="isLiked" onClick={(e) => {this.likeHandler(e)}}>Like/Unlike</Button> </DropdownItem>
+            <DropdownItem header> <Button value="isLiked" onClick={this.likeHandler}>Like/Unlike</Button> </DropdownItem>
             </DropdownMenu>
             </Dropdown>
         )

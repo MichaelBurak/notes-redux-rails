@@ -53,20 +53,7 @@ export default function notesReducer(state = initialState, action) {
           loading: false,
           notes: updatedNoteArray
         }
-    // case 'DELETE_NOTE':
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     deletedNote: action.payload,
-    //     trashCan: [...state.trashCan, action.payload],
-    //     notes: state.notes.filter(note => action.payload.id !== note.id)
-    //   }
     case 'DELETE_NOTE':
-      // const noteAttributes = action.payload
-      // debugger 
-      // const newNoteArray = state.notes.map(note => note.id === noteAttributes.id
-      //     ? noteAttributes : note)
-          //debugger 
           return {
           ...state,
           loading: false,
