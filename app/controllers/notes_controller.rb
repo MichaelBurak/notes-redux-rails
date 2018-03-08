@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
 require 'pry'
   def index
-    @notes = Note.where(deleted: false)
+    @notes = Note.where(deleted: false).order("id ASC")
     render json: @notes
   end
 
