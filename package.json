@@ -4,7 +4,9 @@
         "yarn": "1.3.2"
     },
     "scripts": {
+        "start": "yarn start",
         "build": "cd client && yarn install && yarn run build && cd ..",
-        "postinstall": "yarn start"
+        "deploy": "cp -a client/build/. public/",
+        "postinstall": "yarn run build && yarn run deploy"
     }
 }
