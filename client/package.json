@@ -1,7 +1,8 @@
-{
+{ 
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "bootstrap": "^4.0.0",
     "eslint": "^4.17.0",
@@ -27,6 +28,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:3001/"
+  }
 }
