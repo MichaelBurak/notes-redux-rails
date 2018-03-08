@@ -26,12 +26,12 @@ export function fetchNotes() {
   return function (dispatch) {
     dispatch({type: 'LOADING_NOTES'})
     return fetch('/notes/')
-      //.then(handleErrors)
+      .then(handleErrors)
       .then(res => res.json())
       .then(responseJson => {
         dispatch({type: 'FETCH_NOTES', payload: responseJson})
       })
-      //.catch(error => errorNotify(error))
+      .catch(error => errorNotify(error))
   }
 }
 
@@ -39,12 +39,12 @@ export function fetchTrash() {
   return function (dispatch) {
     dispatch({type: 'LOADING_NOTES'})
     return fetch('/notes/trash')
-      //.then(handleErrors)
+      .then(handleErrors)
       .then(res => res.json())
       .then(responseJson => {
         dispatch({type: 'FETCH_TRASH', payload: responseJson})
       })
-      //.catch(error => errorNotify(error))
+      .catch(error => errorNotify(error))
   }
 }
 
