@@ -22,14 +22,11 @@
     "redux-thunk": "^2.2.0",
     "throttle-action": "^0.0.4"
   },
-  "engines": {
-    "yarn": "1.3.2"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001/"
+  "proxy": "https://redux-rails-notes.herokuapp.com/"
 }
