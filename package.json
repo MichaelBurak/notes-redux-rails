@@ -1,0 +1,10 @@
+{
+    "name": "notes-redux-rails",
+    "engines": {
+        "yarn": "1.3.2"
+    },
+    "scripts": {
+        "build": "cd client && yarn install && yarn run build && cd ..",
+        "postinstall": "yarn start"
+    }
+}
