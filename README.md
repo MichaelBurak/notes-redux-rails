@@ -4,8 +4,11 @@
 
 -To start locally:
     -Fork and clone down via git. 
+    
     -Bundle 
+    
     -CD into directory, then cd client && yarn start to start front-end 
+    
     -In another terminal window, run rails s -p 3001 
 
 -To create and seed database run rake db:setup
