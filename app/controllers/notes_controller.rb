@@ -1,5 +1,22 @@
 class NotesController < ApplicationController
-require 'pry'
+
+  include Knock::Authenticable
+
+  before_action :authenticate_user
+  before_action :skip_session
+
+  def current_user
+  if token
+    @_current_user ||= begin
+      Knock::AuthToken.new(token: token).entity_for(User)
+    rescue
+      nil
+    end
+  else
+    super
+  end
+end
+
   def index
     @notes = Note.where(deleted: false).order("id ASC")
     render json: @notes
@@ -50,8 +67,21 @@ end
 
 
 private
+
   def note_params
     params.require(:note).permit(:title, :content, :deleted, :liked)
   end
+
+  def skip_session
+  request.session_options[:skip] = true if token
+end
+
+  def authenticate_entity(entity_name)
+  if token
+    super(entity_name)
+  else
+    current_user
+  end
+end
 
 end
