@@ -1,17 +1,23 @@
-import React from 'react'
-import {Button} from 'reactstrap'
+import React from "react";
+import { Button } from "reactstrap";
 
-const ClearTrash = ({actions}) => {
+const ClearTrash = ({ actions }) => {
+  const clear = e => {
+    actions.clearTrash();
+  };
 
-const clear = (e) => {
-    actions.clearTrash()
-}
+  return (
+    <div>
+      <Button type="button" onClick={clear}>
+        {" "}
+        Clear the entire Trash{" "}
+      </Button>
+    </div>
+  );
+};
 
-return(
-  <div>
-< Button type = 'button' onClick = {clear} > Clear the entire Trash </Button>
-  </div>
-)
-}
+//test
 
-export default ClearTrash 
+export default ClearTrash;
+
+///tests

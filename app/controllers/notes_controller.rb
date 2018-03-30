@@ -2,7 +2,7 @@ class NotesController < ApplicationController
 
   include Knock::Authenticable
 
-  before_action :authenticate_user
+  # before_action :authenticate_user, only: [:index]
   before_action :skip_session
 
   def current_user
