@@ -16,7 +16,7 @@ const ClearTrash = ({ actions }) => {
   );
 };
 
-//test
+//container
 
 export default ClearTrash;
 
