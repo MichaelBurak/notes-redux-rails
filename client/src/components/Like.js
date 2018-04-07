@@ -1,64 +1,37 @@
-import React from "react";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button
-} from "reactstrap";
-import { bindActionCreators } from "redux";
-import * as actions from "../store/actions/noteActions.js";
-import { connect } from "react-redux";
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import * as actions from '../store/actions/noteActions.js';
+import { connect } from 'react-redux';
+import { Button, Rating } from 'semantic-ui-react';
 
 class Like extends React.Component {
-  constructor(props) {
-    super(props);
+	componentDidMount() {
+		this.setState({ isLiked: this.props.note.liked });
+	}
 
-    this.state = {
-      dropdownOpen: false
-    };
-  }
+	likeHandler = () => {
+		const id = this.props.note.id;
+		const isLiked = this.props.note.liked;
+		this.props.actions.like(id, isLiked);
+	};
 
-  componentDidMount() {
-    this.setState({ isLiked: this.props.note.liked });
-  }
-
-  toggle = () => {
-    let open = this.state.dropdownOpen;
-    this.setState({ dropdownOpen: !open });
-  };
-
-  likeHandler = () => {
-    const id = this.props.note.id;
-    const isLiked = this.props.note.liked;
-    this.props.actions.like(id, isLiked);
-  };
-
-  render() {
-    return (
-      <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
-          Do you want to like this? Note ID {this.props.note.id} is{" "}
-          {this.props.note.liked ? "Liked" : "Not Liked"}
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem header>
-            {" "}
-            <Button value="isLiked" onClick={this.likeHandler}>
-              Like/Unlike
-            </Button>{" "}
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<br />
+				<Button value="isLiked" onClick={this.likeHandler}>
+					Like/Unlike
+				</Button>
+				{this.props.note.liked ? <Rating icon="heart" rating={1} /> : <Rating icon="heart" rating={0} />}
+			</div>
+		);
+	}
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
+	return {
+		actions: bindActionCreators(actions, dispatch),
+	};
 }
-//test
 
 export default connect(null, mapDispatchToProps)(Like);

@@ -1,23 +1,18 @@
-import React from "react";
-import { Button } from "reactstrap";
+import React from 'react';
+import { Button } from 'semantic-ui-react';
 
 const ClearTrash = ({ actions }) => {
-  const clear = e => {
-    actions.clearTrash();
-  };
+	const clear = () => {
+		actions.clearTrash();
+	};
 
-  return (
-    <div>
-      <Button type="button" onClick={clear}>
-        {" "}
-        Clear the entire Trash{" "}
-      </Button>
-    </div>
-  );
+	return (
+		<div>
+			<Button type="button" onClick={clear}>
+				Clear the entire Trash
+			</Button>
+		</div>
+	);
 };
 
-//container
-
 export default ClearTrash;
-
-///tests

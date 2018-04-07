@@ -1,12 +1,13 @@
 //Presentational component displayed when errors occur in API calls.
 
-import React from 'react'
-import {Alert} from 'reactstrap'
+import React from 'react';
+import { Message } from 'semantic-ui-react';
 
-const ErrorAlert = (props) => <div>
-    <Alert color="warning">
-        Something has gone wrong! Terribly sorry!
-    </Alert>
-</div>
+const ErrorAlert = () => (
+	<Message>
+		<Message.Header>There has been an error!</Message.Header>
+		<p>Something has gone wrong! Terribly sorry. Please do try again.</p>
+	</Message>
+);
 
-export default ErrorAlert
+export default ErrorAlert;

@@ -1,21 +1,20 @@
-//Presentational component = renders title and content of passed in Note with link to 
-//edit route for introspected upon note. 
+//Presentational component = renders title and content of passed in Note with link to
+//edit route for introspected upon note.
 
-import React from 'react'
-import {Link} from "react-router-dom"
+import React from 'react';
+import { Header, Segment } from 'semantic-ui-react';
 
-const Note = ({note}) => {
+const Note = ({ note }) => {
+	return (
+		<Segment inverted>
+			<Header as="h4">Current Note Title: {note.title}</Header>
 
-    return (
-      <div>
-        <h3>Current Note Title: {note.title}</h3>
-        <p>{note.content}</p>
-        <Link to={`/notes/${note.id}/edit`}>Edit {note.title}</Link>
-        <br/>
-        <br/>
-        <br/>
-      </div>
-    )
-  }
+			<p>{note.content}</p>
+			<br />
+			<br />
+			<br />
+		</Segment>
+	);
+};
 
-export default Note
+export default Note;
