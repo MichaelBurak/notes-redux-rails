@@ -21,7 +21,7 @@ class TrashContainer extends React.Component {
 						<List.Content floated="left">
 							<ClearTrash actions={this.props.actions} />
 						</List.Content>
-					</List.Item>;
+					</List.Item>
 				</List>
 			</div>
 		);
